@@ -12,23 +12,19 @@ This guide walks you through deploying your site to Vercel and connecting your G
 
 2. **Create a new repository**
    - Go to [github.com/new](https://github.com/new)
-   - Name it something like `girls-gone-digital`
+   - Name it `girls-gone-digital`
    - Choose **Public**
    - Do **not** initialize with a README
    - Click **Create repository**
 
 3. **Push your project to GitHub**
-   - Open Terminal and run:
+   - The project is already committed. Run:
    ```bash
    cd "/Users/samuel/Desktop/CHATGPT CREATED FILES /GIRLS gone digital"
-   git init
-   git add .
-   git commit -m "Initial commit"
-   git branch -M main
-   git remote add origin https://github.com/YOUR_USERNAME/girls-gone-digital.git
-   git push -u origin main
+   chmod +x push-to-github.sh
+   ./push-to-github.sh YOUR_GITHUB_USERNAME
    ```
-   - Replace `YOUR_USERNAME` with your GitHub username.
+   - Replace `YOUR_GITHUB_USERNAME` with your GitHub username.
 
 4. **Import the project in Vercel**
    - Go to [vercel.com](https://vercel.com) and sign in (use GitHub if possible).
