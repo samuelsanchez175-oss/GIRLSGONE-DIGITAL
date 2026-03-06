@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Girls Gone Digital – Creative Platform & Lifestyle Brand</title>
+  <style>
+    :root {
+      --ice-header-h: 28px;
+      --ice-announce-h: 26px;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-weight: 500;
+      background: #ffffff;
+      color: #111;
+      line-height: 1.4;
+      padding-top: var(--ice-header-h);
+    }
+
+    /* Skip to content */
+    .skip-to-content-link {
+      position: absolute;
+      left: -9999px;
+      z-index: 999;
+    }
+    .skip-to-content-link:focus {
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 0.5rem 1rem;
+      background: #000;
+      color: #fff;
+    }
+
+    /* Header */
+    .custom-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      height: var(--ice-header-h);
+    }
+
+    .custom-header-bar {
+      background: #ffffff;
+      width: 100%;
+      height: var(--ice-header-h);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 1.5rem;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    }
+
+    .custom-header-left,
+    .custom-header-right {
+      display: flex;
+      align-items: center;
+      flex: 1;
+    }
+
+    .custom-header-right {
+      justify-content: flex-end;
+    }
+
+    .custom-header-nav ul {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+    }
+
+    .custom-header-nav a,
+    .custom-header-cart-toggle {
+      text-decoration: none;
+      color: #000000;
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 0.02em;
+      background: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      height: var(--ice-header-h);
+    }
+
+    .custom-header-nav a:hover,
+    .custom-header-cart-toggle:hover {
+      opacity: 0.6;
+    }
+
+    .custom-header-logo {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      align-items: center;
+      height: var(--ice-header-h);
+    }
+
+    .custom-header-logo img {
+      height: 24px;
+      width: auto;
+      display: block;
+    }
+
+    .custom-header-cart-toggle {
+      border: none;
+      padding: 0;
+      font-family: inherit;
+    }
+
+    /* Main content */
+    main {
+      min-height: calc(100vh - var(--ice-header-h));
+    }
+
+    .landing-section {
+      position: relative;
+      min-height: calc(100vh - var(--ice-header-h));
+      overflow: hidden;
+      background: #000;
+    }
+    .landing-video {
+      position: absolute;
+      inset: 0;
+    }
+    .landing-video::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.08) 35%, rgba(0, 0, 0, 0.12));
+      pointer-events: none;
+    }
+    .landing-video video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .landing-links {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      justify-content: center;
+      align-content: flex-end;
+      min-height: calc(100vh - var(--ice-header-h));
+      padding: 2rem;
+    }
+    .landing-links a {
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: #ffffff;
+      text-shadow: 0 1px 12px rgba(0, 0, 0, 0.35);
+    }
+    .landing-links a:hover {
+      opacity: 0.75;
+    }
+
+    /* Footer */
+    .ice-footer {
+      width: 100%;
+      background: #ffffff;
+      padding: 14px 1rem;
+      color: #111;
+      border-top: 1px solid rgba(0, 0, 0, 0.06);
+    }
+
+    .ice-footer-inner {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+
+    .ice-footer-links {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      font-size: 11px;
+      line-height: 1.2;
+    }
+
+    .ice-footer-links a {
+      text-decoration: none;
+      color: #111;
+    }
+
+    .ice-footer-links a:hover {
+      opacity: 0.6;
+    }
+    .ice-footer-links .footer-events a { text-decoration: none; color: #111; }
+    .ice-footer-links .footer-events a:hover { opacity: 0.6; }
+
+    .ice-footer-copy {
+      font-size: 11px;
+      color: #111;
+      white-space: nowrap;
+      padding-bottom: 1px;
+    }
+
+    @media (max-width: 768px) {
+      .ice-footer-inner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-to-content-link" href="#MainContent">Skip to content</a>
+
+  <header class="custom-header" role="banner">
+    <div class="custom-header-bar">
+      <div class="custom-header-left">
+        <nav class="custom-header-nav">
+          <ul>
+            <li><a href="pages/digital-girl.html">Digital Girl of the Month</a></li>
+            <li><a href="girls gone digital.html">Home Page</a></li>
+            <li><a href="pages/magazine.html">Magazine</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <a class="custom-header-logo" href="girls gone digital.html">
+        <img src="assets/logo.png" alt="Girls Gone Digital">
+      </a>
+
+      <div class="custom-header-right">
+        <nav class="custom-header-nav">
+          <ul>
+            <li><a href="pages/shop.html">Shop</a></li>
+            <li><a href="pages/about.html">About</a></li>
+            <li><a href="pages/events.html">Events</a></li>
+            <li><button class="custom-header-cart-toggle" type="button" aria-label="Cart">Cart <span id="cartCount">0</span></button></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main id="MainContent" role="main">
+    <section class="landing-section">
+      <div class="landing-video">
+        <video autoplay muted loop playsinline>
+          <source src="assets/homepage-reel.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="landing-links">
+        <a href="pages/shop.html">Shop</a>
+        <a href="pages/about.html">About</a>
+        <a href="pages/digital-girl.html">Digital Girl of the Month</a>
+        <a href="pages/magazine.html">Magazine</a>
+        <a href="pages/events.html">Events</a>
+        <a href="girls gone digital.html">Home Page</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="ice-footer">
+    <div class="ice-footer-inner">
+      <div class="ice-footer-links">
+        <a href="https://www.instagram.com/girlsgonedigital/" target="_blank" rel="noopener">Instagram</a>
+        <a href="pages/information.html">Information</a>
+        <span class="footer-events">Keep up with current events: <a href="https://www.instagram.com/brandonalmengo/" target="_blank" rel="noopener">@brandonalmengo</a> · <a href="https://www.instagram.com/luzidproductions/" target="_blank" rel="noopener">@luzidproductions</a></span>
+        <a href="pages/terms-of-service.html">Terms and Conditions</a>
+      </div>
+      <div class="ice-footer-copy">© 2026 Girls Gone Digital</div>
+    </div>
+  </footer>
+<script src="assets/cart.js"></script>
+</body>
+</html>

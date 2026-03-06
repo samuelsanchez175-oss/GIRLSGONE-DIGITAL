@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Information – Girls Gone Digital</title>
+  <style>
+    :root { --ice-header-h: 28px; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-weight: 500;
+      background: #ffffff;
+      color: #111;
+      padding-top: var(--ice-header-h);
+    }
+    .custom-header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      height: var(--ice-header-h);
+      background: #fff;
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 1.5rem;
+    }
+    .custom-header-left, .custom-header-right { display: flex; align-items: center; flex: 1; }
+    .custom-header-right { justify-content: flex-end; }
+    .custom-header-nav ul { display: flex; gap: 1.5rem; list-style: none; }
+    .custom-header-nav a, .custom-header-cart-toggle {
+      text-decoration: none; color: #000; font-size: 11px; font-weight: 400;
+      letter-spacing: 0.02em; background: none; cursor: pointer;
+      display: flex; align-items: center; height: var(--ice-header-h);
+    }
+    .custom-header-nav a:hover, .custom-header-cart-toggle:hover { opacity: 0.6; }
+    .custom-header-logo { position: absolute; left: 50%; transform: translateX(-50%); }
+    .custom-header-logo img { height: 24px; }
+    .custom-header-cart-toggle { border: none; padding: 0; font-family: inherit; }
+    main {
+      max-width: 600px;
+      margin: 4rem auto;
+      padding: 0 1.5rem;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+    h1 { font-size: 18px; font-weight: 400; margin-bottom: 1.5rem; }
+    .ice-footer {
+      width: 100%;
+      background: #fff;
+      padding: 14px 1rem;
+      border-top: 1px solid rgba(0,0,0,0.06);
+      font-size: 11px;
+    }
+    .ice-footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+    .ice-footer-links { display: flex; flex-direction: column; gap: 3px; }
+    .ice-footer-links a { text-decoration: none; color: #111; }
+    .ice-footer-links a:hover { opacity: 0.6; }
+  </style>
+</head>
+<body>
+  <header class="custom-header">
+    <div class="custom-header-left">
+      <nav class="custom-header-nav">
+        <ul>
+          <li><a href="digital-girl.html">Digital Girl of the Month</a></li>
+          <li><a href="../girls gone digital.html">Home Page</a></li>
+          <li><a href="magazine.html">Magazine</a></li>
+        </ul>
+      </nav>
+    </div>
+    <a class="custom-header-logo" href="../girls gone digital.html">
+      <img src="../assets/logo.png" alt="Girls Gone Digital">
+    </a>
+    <div class="custom-header-right">
+      <nav class="custom-header-nav">
+        <ul>
+          <li><a href="shop.html">Shop</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="events.html">Events</a></li>
+          <li><button class="custom-header-cart-toggle" type="button">Cart <span id="cartCount">0</span></button></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <h1>Information</h1>
+    <h2 style="font-size: 14px; font-weight: 400; margin: 2rem 0 0.5rem;">Shipping</h2>
+    <p>Shipping details and delivery times will be listed here. Domestic and international options available.</p>
+    <h2 style="font-size: 14px; font-weight: 400; margin: 2rem 0 0.5rem;">Returns</h2>
+    <p>Our return policy and exchange process. Contact us for any questions about returns or exchanges.</p>
+    <h2 style="font-size: 14px; font-weight: 400; margin: 2rem 0 0.5rem;">Contact</h2>
+    <p>For inquiries, collaborations, or press: <a href="mailto:hello@girlsgonedigital.com" style="color: #111;">hello@girlsgonedigital.com</a></p>
+  </main>
+  <footer class="ice-footer">
+    <div class="ice-footer-inner">
+      <div class="ice-footer-links">
+        <a href="https://www.instagram.com/girlsgonedigital/" target="_blank" rel="noopener">Instagram</a>
+        <a href="information.html">Information</a>
+        <a href="terms-of-service.html">Terms and Conditions</a>
+      </div>
+      <div>© 2026 Girls Gone Digital</div>
+    </div>
+  </footer>
+<script src="../assets/cart.js"></script>
+</body>
+</html>

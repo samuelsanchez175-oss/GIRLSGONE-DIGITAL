@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Magazine – Girls Gone Digital</title>
+  <style>
+    :root { --ice-header-h: 28px; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-weight: 500;
+      background: #fff;
+      color: #111;
+      padding-top: var(--ice-header-h);
+    }
+    .custom-header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      height: var(--ice-header-h);
+      background: #fff;
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 1.5rem;
+    }
+    .custom-header-left, .custom-header-right { display: flex; align-items: center; flex: 1; }
+    .custom-header-right { justify-content: flex-end; }
+    .custom-header-nav ul { display: flex; gap: 1.5rem; list-style: none; }
+    .custom-header-nav a, .custom-header-cart-toggle {
+      text-decoration: none; color: #000; font-size: 11px; font-weight: 400;
+      letter-spacing: 0.02em; background: none; cursor: pointer;
+      display: flex; align-items: center; height: var(--ice-header-h);
+    }
+    .custom-header-nav a:hover, .custom-header-cart-toggle:hover { opacity: 0.6; }
+    .custom-header-logo { position: absolute; left: 50%; transform: translateX(-50%); }
+    .custom-header-logo img { height: 24px; }
+    .custom-header-cart-toggle { border: none; padding: 0; font-family: inherit; }
+    .page-section {
+      position: relative;
+      min-height: calc(100vh - var(--ice-header-h));
+      overflow: hidden;
+      background: #e8ddd8;
+    }
+    .magazine-cover-wrap {
+      position: absolute;
+      inset: 0;
+    }
+    .page-section h1 {
+      font-size: 14px;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+    }
+    .page-section p {
+      font-size: 14px;
+      line-height: 1.7;
+      color: rgba(255, 255, 255, 0.88);
+      max-width: 520px;
+    }
+    .page-section a {
+      display: inline-block;
+      margin-top: 1rem;
+      font-size: 11px;
+      letter-spacing: 0.05em;
+      text-decoration: none;
+      color: #fff;
+    }
+    .page-section a:hover { opacity: 0.6; }
+    .magazine-cover {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .magazine-cover-wrap::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.1) 38%, rgba(0, 0, 0, 0.08));
+      pointer-events: none;
+    }
+    .page-content {
+      position: relative;
+      z-index: 1;
+      min-height: calc(100vh - var(--ice-header-h));
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+      color: #fff;
+    }
+    .ice-footer {
+      width: 100%; background: #fff; padding: 14px 1rem;
+      border-top: 1px solid rgba(0,0,0,0.06); font-size: 11px;
+    }
+    .ice-footer-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: flex; justify-content: space-between; align-items: flex-end;
+    }
+    .ice-footer-links { display: flex; flex-direction: column; gap: 3px; }
+    .ice-footer-links a { text-decoration: none; color: #111; }
+    .ice-footer-links a:hover { opacity: 0.6; }
+    @media (max-width: 768px) {
+      .ice-footer-inner { flex-direction: column; align-items: flex-start; gap: 16px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="custom-header">
+    <div class="custom-header-left">
+      <nav class="custom-header-nav">
+        <ul>
+          <li><a href="digital-girl.html">Digital Girl of the Month</a></li>
+          <li><a href="../girls gone digital.html">Home Page</a></li>
+          <li><a href="magazine.html">Magazine</a></li>
+        </ul>
+      </nav>
+    </div>
+    <a class="custom-header-logo" href="../girls gone digital.html">
+      <img src="../assets/logo.png" alt="Girls Gone Digital">
+    </a>
+    <div class="custom-header-right">
+      <nav class="custom-header-nav">
+        <ul>
+          <li><a href="shop.html">Shop</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="events.html">Events</a></li>
+          <li><button class="custom-header-cart-toggle" type="button">Cart <span id="cartCount">0</span></button></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-section">
+      <div class="magazine-cover-wrap">
+        <img class="magazine-cover" src="../assets/magazine-cover-issue-1.png" alt="Girls Gone Digital magazine cover issue 1">
+      </div>
+      <div class="page-content">
+        <div>
+          <h1>Digital Magazine</h1>
+          <p>Our digital magazine celebrates creativity, culture, and the women shaping the future.</p>
+          <a href="#">Read the Magazine →</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="ice-footer">
+    <div class="ice-footer-inner">
+      <div class="ice-footer-links">
+        <a href="https://www.instagram.com/girlsgonedigital/" target="_blank" rel="noopener">Instagram</a>
+        <a href="information.html">Information</a>
+        <a href="terms-of-service.html">Terms and Conditions</a>
+      </div>
+      <div>© 2026 Girls Gone Digital</div>
+    </div>
+  </footer>
+<script src="../assets/cart.js"></script>
+</body>
+</html>

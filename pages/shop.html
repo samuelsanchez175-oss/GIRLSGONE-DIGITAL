@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shop – Girls Gone Digital</title>
+  <style>
+    :root { --ice-header-h: 28px; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-weight: 500;
+      background: #f8e8f0;
+      color: #111;
+      padding-top: var(--ice-header-h);
+    }
+    .custom-header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      height: var(--ice-header-h);
+      background: #fff;
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 1.5rem;
+    }
+    .custom-header-left, .custom-header-right { display: flex; align-items: center; flex: 1; }
+    .custom-header-right { justify-content: flex-end; }
+    .custom-header-nav ul { display: flex; gap: 1.5rem; list-style: none; }
+    .custom-header-nav a, .custom-header-cart-toggle {
+      text-decoration: none; color: #000; font-size: 11px; font-weight: 400;
+      letter-spacing: 0.02em; background: none; cursor: pointer;
+      display: flex; align-items: center; height: var(--ice-header-h);
+    }
+    .custom-header-nav a:hover, .custom-header-cart-toggle:hover { opacity: 0.6; }
+    .custom-header-logo { position: absolute; left: 50%; transform: translateX(-50%); }
+    .custom-header-logo img { height: 24px; }
+    .custom-header-cart-toggle { border: none; padding: 0; font-family: inherit; }
+    .merch-section { padding: 2rem 1rem 4rem; background: #f8e8f0; }
+    .merch-section h2 {
+      font-size: 14px; font-weight: 400; letter-spacing: 0.08em;
+      text-transform: uppercase; text-align: right; margin-bottom: 1rem;
+    }
+    .merch-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem 1.25rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .merch-item { color: #111; }
+    .merch-item-image {
+      background: transparent;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      min-height: 290px;
+      text-decoration: none;
+      color: inherit;
+    }
+    .merch-item-image:hover { opacity: 0.85; }
+    .merch-item img {
+      width: 100%;
+      object-fit: contain;
+      display: block;
+    }
+    .merch-item-info { padding-top: 0.75rem; text-align: left; }
+    .merch-item-name {
+      font-size: 11px;
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: 0.02em;
+      margin-bottom: 0.25rem;
+      text-transform: uppercase;
+      color: inherit;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .merch-item-name:hover { opacity: 0.6; }
+    .merch-item-price { font-size: 12px; font-weight: 400; margin-bottom: 0.5rem; }
+    .merch-item .add-to-cart {
+      display: inline-block;
+      padding: 0.4rem 0.8rem;
+      font-family: inherit;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      background: #111;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+    }
+    .merch-item .add-to-cart:hover { opacity: 0.85; }
+    .ice-footer {
+      width: 100%; background: #f8e8f0; padding: 14px 1rem;
+      border-top: 1px solid rgba(0,0,0,0.06); font-size: 11px;
+    }
+    .ice-footer-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: flex; justify-content: space-between; align-items: flex-end;
+    }
+    .ice-footer-links { display: flex; flex-direction: column; gap: 3px; }
+    .ice-footer-links a { text-decoration: none; color: #111; }
+    .ice-footer-links a:hover { opacity: 0.6; }
+    @media (max-width: 768px) {
+      .custom-header {
+        background: #e5a8d5;
+        border-bottom: none;
+        padding: 0 0.75rem;
+      }
+      .custom-header-nav ul {
+        gap: 0.75rem;
+      }
+      .custom-header-nav a, .custom-header-cart-toggle {
+        font-size: 10px;
+      }
+      .merch-section {
+        padding: 1rem 0.75rem 3rem;
+      }
+      .merch-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem 1rem;
+      }
+      .merch-item-image {
+        min-height: 180px;
+      }
+      .ice-footer-inner { flex-direction: column; align-items: flex-start; gap: 16px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="custom-header">
+    <div class="custom-header-left">
+      <nav class="custom-header-nav">
+        <ul>
+          <li><a href="digital-girl.html">Digital Girl of the Month</a></li>
+          <li><a href="diary.html">Diary</a></li>
+          <li><a href="magazine.html">Magazine</a></li>
+        </ul>
+      </nav>
+    </div>
+    <a class="custom-header-logo" href="../girls gone digital.html">
+      <img src="../assets/logo.png" alt="Girls Gone Digital">
+    </a>
+    <div class="custom-header-right">
+      <nav class="custom-header-nav">
+        <ul>
+          <li><a href="shop.html">Shop</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="events.html">Events</a></li>
+          <li><button class="custom-header-cart-toggle" type="button" id="cartBtn">Cart <span id="cartCount">0</span></button></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="merch-section">
+      <h2>Shop</h2>
+      <div class="merch-grid">
+        <div class="merch-item">
+          <a href="product-tshirt-blk.html" class="merch-item-image"><img src="../assets/product-tshirt-blk-raw.png" alt="GGD T-Shirt Black"></a>
+          <div class="merch-item-info">
+            <a href="product-tshirt-blk.html" class="merch-item-name">GGD T-SHIRT (BLK)</a>
+            <div class="merch-item-price">$35.00</div>
+            <button type="button" class="add-to-cart" data-name="GGD T-SHIRT (BLK)" data-price="35.00">Add to Cart</button>
+          </div>
+        </div>
+        <div class="merch-item">
+          <a href="product-tshirt-wht.html" class="merch-item-image"><img src="../assets/product-tshirt-wht.png" alt="GGD T-Shirt White"></a>
+          <div class="merch-item-info">
+            <a href="product-tshirt-wht.html" class="merch-item-name">GGD T-SHIRT (WHT)</a>
+            <div class="merch-item-price">$35.00</div>
+            <button type="button" class="add-to-cart" data-name="GGD T-SHIRT (WHT)" data-price="35.00">Add to Cart</button>
+          </div>
+        </div>
+        <div class="merch-item">
+          <a href="product-onesie-short-blk.html" class="merch-item-image"><img src="../assets/product-onezy-short-blk-raw.png" alt="GGD Short Sleeve Onesie Black"></a>
+          <div class="merch-item-info">
+            <a href="product-onesie-short-blk.html" class="merch-item-name">GGD SHORT SLEEVE ONESIE (BLK)</a>
+            <div class="merch-item-price">$35.00</div>
+            <button type="button" class="add-to-cart" data-name="GGD SHORT SLEEVE ONESIE (BLK)" data-price="35.00">Add to Cart</button>
+          </div>
+        </div>
+        <div class="merch-item">
+          <a href="product-onesie-short-wht.html" class="merch-item-image"><img src="../assets/product-onezy-short-wht.png" alt="GGD Short Sleeve Onesie White"></a>
+          <div class="merch-item-info">
+            <a href="product-onesie-short-wht.html" class="merch-item-name">GGD SHORT SLEEVE ONESIE (WHT)</a>
+            <div class="merch-item-price">$35.00</div>
+            <button type="button" class="add-to-cart" data-name="GGD SHORT SLEEVE ONESIE (WHT)" data-price="35.00">Add to Cart</button>
+          </div>
+        </div>
+        <div class="merch-item">
+          <a href="product-onesie-long-blk.html" class="merch-item-image"><img src="../assets/product-onezy-long-blk-raw.png" alt="GGD Long Sleeve Onesie Black"></a>
+          <div class="merch-item-info">
+            <a href="product-onesie-long-blk.html" class="merch-item-name">GGD LONG SLEEVE ONESIE (BLK)</a>
+            <div class="merch-item-price">$45.00</div>
+            <button type="button" class="add-to-cart" data-name="GGD LONG SLEEVE ONESIE (BLK)" data-price="45.00">Add to Cart</button>
+          </div>
+        </div>
+        <div class="merch-item">
+          <a href="product-onesie-long-wht.html" class="merch-item-image"><img src="../assets/product-onezy-long-wht.png" alt="GGD Long Sleeve Onesie White"></a>
+          <div class="merch-item-info">
+            <a href="product-onesie-long-wht.html" class="merch-item-name">GGD LONG SLEEVE ONESIE (WHT)</a>
+            <div class="merch-item-price">$45.00</div>
+            <button type="button" class="add-to-cart" data-name="GGD LONG SLEEVE ONESIE (WHT)" data-price="45.00">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="ice-footer">
+    <div class="ice-footer-inner">
+      <div class="ice-footer-links">
+        <a href="https://www.instagram.com/girlsgonedigital/" target="_blank" rel="noopener">Instagram</a>
+        <a href="information.html">Information</a>
+        <span class="footer-events">Keep up with current events: <a href="https://www.instagram.com/brandonalmengo/" target="_blank" rel="noopener">@brandonalmengo</a> · <a href="https://www.instagram.com/luzidproductions/" target="_blank" rel="noopener">@luzidproductions</a></span>
+        <a href="terms-of-service.html">Terms and Conditions</a>
+      </div>
+      <div>© 2026 Girls Gone Digital</div>
+    </div>
+  </footer>
+  <script>
+    (function() {
+      var KEY = 'ggdCart';
+      function getCart() { return JSON.parse(localStorage.getItem(KEY) || '[]'); }
+      function saveCart(c) { localStorage.setItem(KEY, JSON.stringify(c)); updateCount(); if (window.ggdCartRender) window.ggdCartRender(); }
+      function updateCount() {
+        var el = document.getElementById('cartCount');
+        if (el) el.textContent = getCart().reduce(function(s, i) { return s + (i.qty || 1); }, 0);
+      }
+      function addToCart(name, price) {
+        var c = getCart();
+        var i = c.findIndex(function(x) { return x.name === name; });
+        if (i >= 0) c[i].qty = (c[i].qty || 1) + 1;
+        else c.push({ name: name, price: price, qty: 1 });
+        saveCart(c);
+      }
+      updateCount();
+      document.querySelectorAll('.add-to-cart').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          addToCart(this.dataset.name, this.dataset.price);
+          this.textContent = 'Added';
+          var t = this;
+          setTimeout(function() { t.textContent = 'Add to Cart'; }, 800);
+        });
+      });
+    })();
+  </script>
+  <script src="../assets/cart.js"></script>
+</body>
+</html>

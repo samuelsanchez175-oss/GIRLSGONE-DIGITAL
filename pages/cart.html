@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cart – Girls Gone Digital</title>
+  <style>
+    :root { --ice-header-h: 28px; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-weight: 500;
+      background: #f8e8f0;
+      color: #111;
+      padding-top: var(--ice-header-h);
+    }
+    .custom-header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      height: var(--ice-header-h);
+      background: #fff;
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 1.5rem;
+    }
+    .custom-header-left, .custom-header-right { display: flex; align-items: center; flex: 1; }
+    .custom-header-right { justify-content: flex-end; }
+    .custom-header-nav ul { display: flex; gap: 1.5rem; list-style: none; }
+    .custom-header-nav a, .custom-header-cart-toggle {
+      text-decoration: none; color: #000; font-size: 11px; font-weight: 400;
+      letter-spacing: 0.02em; background: none; cursor: pointer;
+      display: flex; align-items: center; height: var(--ice-header-h);
+    }
+    .custom-header-nav a:hover, .custom-header-cart-toggle:hover { opacity: 0.6; }
+    .custom-header-logo { position: absolute; left: 50%; transform: translateX(-50%); }
+    .custom-header-logo img { height: 24px; }
+    .custom-header-cart-toggle { border: none; padding: 0; font-family: inherit; }
+    .cart-section {
+      padding: 4rem 1.5rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .cart-section h1 {
+      font-size: 14px;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+    .cart-empty {
+      color: #666;
+      margin-bottom: 1rem;
+    }
+    .cart-empty + .cart-shop-link { margin-top: 0.5rem; }
+    .cart-list { margin-bottom: 1.5rem; }
+    .cart-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: 0.75rem 0;
+      border-bottom: 1px solid rgba(0,0,0,0.08);
+      font-size: 12px;
+    }
+    .cart-row__name, .cart-row__name-link { font-weight: 600; }
+    .cart-row__name-link { color: inherit; text-decoration: none; }
+    .cart-row__name-link:hover { opacity: 0.6; }
+    .cart-row__qty { color: #666; margin: 0 0.5rem; }
+    .cart-row__price { }
+    .cart-row__remove {
+      margin-left: 0.5rem;
+      font-size: 10px;
+      color: #999;
+      cursor: pointer;
+      background: none;
+      border: none;
+      font-family: inherit;
+    }
+    .cart-row__remove:hover { color: #111; }
+    .cart-total {
+      font-weight: 600;
+      font-size: 14px;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(0,0,0,0.1);
+      margin-bottom: 1.5rem;
+    }
+    .cart-shop-link {
+      display: inline-block;
+      font-size: 11px;
+      letter-spacing: 0.05em;
+      text-decoration: none;
+      color: #111;
+    }
+    .cart-shop-link:hover { opacity: 0.6; }
+    .ice-footer {
+      width: 100%; background: #f8e8f0; padding: 14px 1rem;
+      border-top: 1px solid rgba(0,0,0,0.06); font-size: 11px;
+    }
+    .ice-footer-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: flex; justify-content: space-between; align-items: flex-end;
+    }
+    .ice-footer-links { display: flex; flex-direction: column; gap: 3px; }
+    .ice-footer-links a { text-decoration: none; color: #111; }
+    .ice-footer-links a:hover { opacity: 0.6; }
+    .footer-events { font-size: 11px; }
+    .ice-footer-links .footer-events a { text-decoration: none; color: #111; }
+    .ice-footer-links .footer-events a:hover { opacity: 0.6; }
+    @media (max-width: 768px) {
+      .ice-footer-inner { flex-direction: column; align-items: flex-start; gap: 16px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="custom-header">
+    <div class="custom-header-left">
+      <nav class="custom-header-nav">
+        <ul>
+          <li><a href="digital-girl.html">Digital Girl of the Month</a></li>
+          <li><a href="../girls gone digital.html">Home Page</a></li>
+          <li><a href="magazine.html">Magazine</a></li>
+        </ul>
+      </nav>
+    </div>
+    <a class="custom-header-logo" href="../girls gone digital.html">
+      <img src="../assets/logo.png" alt="Girls Gone Digital">
+    </a>
+    <div class="custom-header-right">
+      <nav class="custom-header-nav">
+        <ul>
+          <li><a href="shop.html">Shop</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="events.html">Events</a></li>
+          <li><a href="cart.html" class="custom-header-cart-toggle">Cart <span id="cartCount">0</span></a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="cart-section">
+      <h1>Cart</h1>
+      <div id="cartContent"></div>
+      <a href="shop.html" class="cart-shop-link">← Continue shopping</a>
+    </section>
+  </main>
+
+  <footer class="ice-footer">
+    <div class="ice-footer-inner">
+      <div class="ice-footer-links">
+        <a href="https://www.instagram.com/girlsgonedigital/" target="_blank" rel="noopener">Instagram</a>
+        <a href="information.html">Information</a>
+        <span class="footer-events">Keep up with current events: <a href="https://www.instagram.com/brandonalmengo/" target="_blank" rel="noopener">@brandonalmengo</a> · <a href="https://www.instagram.com/luzidproductions/" target="_blank" rel="noopener">@luzidproductions</a></span>
+        <a href="terms-of-service.html">Terms and Conditions</a>
+      </div>
+      <div>© 2026 Girls Gone Digital</div>
+    </div>
+  </footer>
+  <script>
+    (function() {
+      var KEY = 'ggdCart';
+      var PRODUCT_URLS = {
+        'GGD T-SHIRT (BLK)': 'product-tshirt-blk.html',
+        'GGD T-SHIRT (WHT)': 'product-tshirt-wht.html',
+        'GGD SHORT SLEEVE ONESIE (BLK)': 'product-onesie-short-blk.html',
+        'GGD SHORT SLEEVE ONESIE (WHT)': 'product-onesie-short-wht.html',
+        'GGD LONG SLEEVE ONESIE (BLK)': 'product-onesie-long-blk.html',
+        'GGD LONG SLEEVE ONESIE (WHT)': 'product-onesie-long-wht.html'
+      };
+      function getProductUrl(name) { return PRODUCT_URLS[name] || 'shop.html'; }
+      function getCart() { return JSON.parse(localStorage.getItem(KEY) || '[]'); }
+      function saveCart(c) { localStorage.setItem(KEY, JSON.stringify(c)); render(); }
+      function render() {
+        var c = getCart();
+        var n = c.reduce(function(s, i) { return s + (i.qty || 1); }, 0);
+        var countEl = document.getElementById('cartCount');
+        if (countEl) countEl.textContent = n;
+        var content = document.getElementById('cartContent');
+        if (!content) return;
+        if (c.length === 0) {
+          content.innerHTML = '<div class="cart-empty">Your cart is empty.</div>';
+          return;
+        }
+        var html = '<div class="cart-list">';
+        c.forEach(function(item, idx) {
+          var q = item.qty || 1;
+          var p = parseFloat(item.price) || 0;
+          var displayName = item.name + (item.size ? ' - ' + item.size : '');
+          var url = getProductUrl(item.name);
+          var nameHtml = url ? '<a href="' + url + '" class="cart-row__name-link">' + displayName + '</a>' : '<span class="cart-row__name">' + displayName + '</span>';
+          html += '<div class="cart-row" data-idx="' + idx + '">';
+          html += nameHtml;
+          html += '<span class="cart-row__qty">×' + q + '</span>';
+          html += '<span class="cart-row__price">$' + (p * q).toFixed(2) + '</span>';
+          html += '<button type="button" class="cart-row__remove" aria-label="Remove">Remove</button>';
+          html += '</div>';
+        });
+        html += '</div>';
+        var total = c.reduce(function(s, i) { return s + (parseFloat(i.price) || 0) * (i.qty || 1); }, 0);
+        html += '<div class="cart-total">Total: $' + total.toFixed(2) + '</div>';
+        content.innerHTML = html;
+        content.querySelectorAll('.cart-row__remove').forEach(function(btn) {
+          btn.addEventListener('click', function() {
+            var idx = parseInt(this.closest('.cart-row').dataset.idx, 10);
+            var cart = getCart();
+            cart.splice(idx, 1);
+            saveCart(cart);
+            if (window.ggdCartRender) window.ggdCartRender();
+          });
+        });
+      }
+      render();
+    })();
+  </script>
+  <script src="../assets/cart.js"></script>
+</body>
+</html>

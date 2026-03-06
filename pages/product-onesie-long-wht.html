@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GGD Long Sleeve Onesie (White) – Girls Gone Digital</title>
+  <style>
+    :root { --ice-header-h: 28px; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-weight: 500;
+      background: #f8e8f0;
+      color: #111;
+      padding-top: var(--ice-header-h);
+    }
+    .custom-header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      height: var(--ice-header-h);
+      background: #fff;
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 1.5rem;
+    }
+    .custom-header-left, .custom-header-right { display: flex; align-items: center; flex: 1; }
+    .custom-header-right { justify-content: flex-end; }
+    .custom-header-nav ul { display: flex; gap: 1.5rem; list-style: none; }
+    .custom-header-nav a, .custom-header-cart-toggle {
+      text-decoration: none; color: #000; font-size: 11px; font-weight: 400;
+      letter-spacing: 0.02em; background: none; cursor: pointer;
+      display: flex; align-items: center; height: var(--ice-header-h);
+    }
+    .custom-header-nav a:hover, .custom-header-cart-toggle:hover { opacity: 0.6; }
+    .custom-header-logo { position: absolute; left: 50%; transform: translateX(-50%); }
+    .custom-header-logo img { height: 24px; }
+    .custom-header-cart-toggle { border: none; padding: 0; font-family: inherit; }
+    .product-section {
+      padding: 2rem 1rem 4rem;
+      max-width: 500px;
+      margin: 0 auto;
+      background: #f8e8f0;
+    }
+    .product-image {
+      background: transparent;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      min-height: 320px;
+      margin-bottom: 1.5rem;
+    }
+    .product-image img {
+      width: 100%;
+      object-fit: contain;
+      display: block;
+    }
+    .product-name {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      margin-bottom: 0.25rem;
+      text-transform: uppercase;
+    }
+    .product-price { font-size: 12px; font-weight: 400; margin-bottom: 1rem; }
+    .product-size-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+    .product-size-options {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 1.25rem;
+    }
+    .product-size-options input { display: none; }
+    .product-size-options label {
+      display: inline-block;
+      padding: 0.5rem 0.9rem;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      border: 1px solid rgba(0,0,0,0.2);
+      cursor: pointer;
+    }
+    .product-size-options input:checked + label {
+      background: #111;
+      color: #fff;
+      border-color: #111;
+    }
+    .product-add-btn {
+      display: inline-block;
+      padding: 0.6rem 1.2rem;
+      font-family: inherit;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      background: #111;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+    }
+    .product-add-btn:hover { opacity: 0.85; }
+    .product-add-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+    .product-actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 1rem;
+      gap: 1rem;
+    }
+    .product-back { font-size: 11px; color: #666; text-decoration: none; }
+    .product-back:hover { color: #111; }
+    .ice-footer {
+      width: 100%; background: #f8e8f0; padding: 14px 1rem;
+      border-top: 1px solid rgba(0,0,0,0.06); font-size: 11px;
+    }
+    .ice-footer-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: flex; justify-content: space-between; align-items: flex-end;
+    }
+    .ice-footer-links { display: flex; flex-direction: column; gap: 3px; }
+    .ice-footer-links a { text-decoration: none; color: #111; }
+    .ice-footer-links a:hover { opacity: 0.6; }
+    .footer-events { font-size: 11px; }
+    .ice-footer-links .footer-events a { text-decoration: none; color: #111; }
+    .ice-footer-links .footer-events a:hover { opacity: 0.6; }
+  </style>
+</head>
+<body>
+  <header class="custom-header">
+    <div class="custom-header-left">
+      <nav class="custom-header-nav">
+        <ul>
+          <li><a href="digital-girl.html">Digital Girl of the Month</a></li>
+          <li><a href="../girls gone digital.html">Home Page</a></li>
+          <li><a href="magazine.html">Magazine</a></li>
+        </ul>
+      </nav>
+    </div>
+    <a class="custom-header-logo" href="../girls gone digital.html">
+      <img src="../assets/logo.png" alt="Girls Gone Digital">
+    </a>
+    <div class="custom-header-right">
+      <nav class="custom-header-nav">
+        <ul>
+          <li><a href="shop.html">Shop</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="events.html">Events</a></li>
+          <li><button class="custom-header-cart-toggle" type="button" id="cartBtn">Cart <span id="cartCount">0</span></button></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="product-section">
+      <div class="product-image"><img src="../assets/product-onezy-long-wht.png" alt="GGD Long Sleeve Onesie White"></div>
+      <h1 class="product-name">GGD LONG SLEEVE ONESIE (WHT)</h1>
+      <div class="product-price">$45.00</div>
+      <label class="product-size-label">Size</label>
+      <div class="product-size-options">
+        <input type="radio" name="size" id="xs" value="XS">
+        <label for="xs">XS</label>
+        <input type="radio" name="size" id="s" value="S">
+        <label for="s">S</label>
+        <input type="radio" name="size" id="m" value="M">
+        <label for="m">M</label>
+        <input type="radio" name="size" id="l" value="L">
+        <label for="l">L</label>
+        <input type="radio" name="size" id="xl" value="XL">
+        <label for="xl">XL</label>
+      </div>
+      <div class="product-actions">
+        <button type="button" class="product-add-btn" id="addBtn" data-name="GGD LONG SLEEVE ONESIE (WHT)" data-price="45.00">Add to Cart</button>
+        <a href="shop.html" class="product-back">← Back to Shop</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="ice-footer">
+    <div class="ice-footer-inner">
+      <div class="ice-footer-links">
+        <a href="https://www.instagram.com/girlsgonedigital/" target="_blank" rel="noopener">Instagram</a>
+        <a href="information.html">Information</a>
+        <span class="footer-events">Keep up with current events: <a href="https://www.instagram.com/brandonalmengo/" target="_blank" rel="noopener">@brandonalmengo</a> · <a href="https://www.instagram.com/luzidproductions/" target="_blank" rel="noopener">@luzidproductions</a></span>
+        <a href="terms-of-service.html">Terms and Conditions</a>
+      </div>
+      <div>© 2026 Girls Gone Digital</div>
+    </div>
+  </footer>
+  <script>
+    (function() {
+      var KEY = 'ggdCart';
+      function getCart() { return JSON.parse(localStorage.getItem(KEY) || '[]'); }
+      function saveCart(c) { localStorage.setItem(KEY, JSON.stringify(c)); if (window.ggdCartRender) window.ggdCartRender(); }
+      var btn = document.getElementById('addBtn');
+      var name = btn.getAttribute('data-name');
+      var price = btn.getAttribute('data-price');
+      btn.addEventListener('click', function() {
+        var sizeEl = document.querySelector('input[name="size"]:checked');
+        if (!sizeEl) { alert('Please select a size.'); return; }
+        var size = sizeEl.value;
+        var c = getCart();
+        c.push({ name: name, price: price, qty: 1, size: size });
+        saveCart(c);
+        alert('Added to cart!');
+      });
+    })();
+  </script>
+  <script src="../assets/cart.js"></script>
+</body>
+</html>
