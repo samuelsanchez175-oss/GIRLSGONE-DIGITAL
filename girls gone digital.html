@@ -147,6 +147,30 @@
       object-fit: cover;
       display: block;
     }
+    .landing-unmute {
+      position: absolute;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      z-index: 2;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(0, 0, 0, 0.5);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      color: #fff;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      transition: background 0.2s;
+    }
+    .landing-unmute:hover {
+      background: rgba(0, 0, 0, 0.7);
+    }
+    .landing-unmute.is-unmuted .icon-unmute { display: none; }
+    .landing-unmute.is-unmuted .icon-mute { display: inline; }
+    .landing-unmute .icon-mute { display: none; }
     .landing-links {
       position: relative;
       z-index: 1;
@@ -258,9 +282,10 @@
   <main id="MainContent" role="main">
     <section class="landing-section">
       <div class="landing-video">
-        <video autoplay muted loop playsinline>
+        <video id="landingVideo" autoplay muted loop playsinline>
           <source src="assets/homepage-reel.mp4" type="video/mp4">
         </video>
+        <button type="button" class="landing-unmute" id="landingUnmute" aria-label="Toggle sound"><span class="icon-unmute">🔊</span><span class="icon-mute">🔇</span></button>
       </div>
       <div class="landing-links">
         <a href="pages/shop.html">Shop</a>
@@ -284,6 +309,19 @@
       <div class="ice-footer-copy">© 2026 Girls Gone Digital</div>
     </div>
   </footer>
-<script src="assets/cart.js"></script>
+  <script>
+    (function() {
+      var video = document.getElementById('landingVideo');
+      var btn = document.getElementById('landingUnmute');
+      if (video && btn) {
+        btn.addEventListener('click', function() {
+          video.muted = !video.muted;
+          if (!video.muted) video.play().catch(function() {});
+          btn.classList.toggle('is-unmuted', !video.muted);
+        });
+      }
+    })();
+  </script>
+  <script src="assets/cart.js"></script>
 </body>
 </html>
