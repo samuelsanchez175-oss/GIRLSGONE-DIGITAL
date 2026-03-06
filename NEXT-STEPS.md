@@ -1,52 +1,38 @@
 # Next Steps to Go Live
 
-Your project is committed and ready. Complete these steps to deploy:
+**Your site is deployed at [https://girls-gone-digital.vercel.app](https://girls-gone-digital.vercel.app)**
+
+The domain `girlsgone.digital` is added in Vercel. You only need to update GoDaddy DNS:
 
 ---
 
-## 1. Create GitHub repo and push
+## Update GoDaddy DNS
 
-1. Go to [github.com/new](https://github.com/new)
-2. Repository name: `girls-gone-digital`
-3. Public, no README → **Create repository**
-4. In Terminal:
-   ```bash
-   cd "/Users/samuel/Desktop/CHATGPT CREATED FILES /GIRLS gone digital"
-   chmod +x push-to-github.sh
-   ./push-to-github.sh YOUR_GITHUB_USERNAME
-   ```
+1. Go to [GoDaddy](https://www.godaddy.com) → **My Products** → select `girlsgone.digital`
+2. Click the **DNS** tab (not Products or Overview)
+3. Add or update these records:
 
----
+| Type | Name | Value | TTL |
+|------|------|-------|-----|
+| A | @ | 76.76.21.21 | 600 |
+| A | www | 76.76.21.21 | 600 |
 
-## 2. Deploy on Vercel
-
-1. Go to [vercel.com/new](https://vercel.com/new)
-2. Sign in with GitHub
-3. Import `girls-gone-digital` repo
-4. Click **Deploy**
-5. Note your URL (e.g. `girls-gone-digital.vercel.app`)
+4. Remove any existing A records for `@` or `www` that point elsewhere
+5. Save
 
 ---
 
-## 3. Add domain in Vercel
+## Optional: Push to GitHub (for auto-deploys)
 
-1. Project → **Settings** → **Domains**
-2. Add `girlsgone.digital`
-3. Copy the DNS records Vercel shows
+To get automatic deploys when you update the site:
 
----
-
-## 4. Update GoDaddy DNS
-
-1. GoDaddy → your domain → **DNS** tab (not Products)
-2. Add/update records per Vercel’s instructions, typically:
-   - **A** record: `@` → `76.76.21.21`
-   - **CNAME** record: `www` → `cname.vercel-dns.com`
-3. Save
+1. Create repo at [github.com/new](https://github.com/new) named `girls-gone-digital`
+2. Run: `./push-to-github.sh YOUR_GITHUB_USERNAME`
+3. In Vercel: **Settings** → **Git** → connect the GitHub repo
 
 ---
 
-## 5. Wait and verify
+## Verify
 
 - DNS propagation: a few minutes to 48 hours
 - Visit [https://girlsgone.digital](https://girlsgone.digital) when ready
