@@ -1,15 +1,23 @@
 ---
-description: Commit and deploy after every change - site is live on Vercel
+description: Auto commit, push, and deploy after every change - site is live on Vercel
 alwaysApply: true
 ---
 
-# Commit and Deploy After Every Prompt
+# Auto Commit, Push, and Deploy After Every Prompt
 
-After making any code changes in response to the user, always:
+After making any code changes in response to the user, always run these steps:
 
-1. **Commit** the changes with a descriptive message
-2. **Deploy to Vercel** by running `npx vercel --prod` from the project root
+1. **Commit and push** to git:
+   ```bash
+   cd "/Users/samuel/Desktop/CHATGPT CREATED FILES /GIRLS gone digital"
+   git add -A && git status
+   git commit -m "Brief descriptive message of changes"
+   git push
+   ```
 
-The site is live at https://girlsgone.digital. Deploying ensures changes go live immediately.
+2. **Deploy to Vercel** so changes go live:
+   ```bash
+   npx vercel --prod --yes
+   ```
 
-GitHub push may fail if the repo is not yet created; Vercel deploy will still work.
+The site is live at https://girlsgone.digital. Run these after every prompt that results in file changes.
