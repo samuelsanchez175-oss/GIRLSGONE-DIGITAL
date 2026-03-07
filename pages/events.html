@@ -35,8 +35,13 @@
       display: flex; align-items: center; height: var(--ice-header-h);
     }
     .custom-header-nav a:hover, .custom-header-cart-toggle:hover { opacity: 0.6; }
-    .custom-header-logo { position: absolute; left: 50%; transform: translateX(-50%); }
-    .custom-header-logo img { height: 24px; }
+    .custom-header-logo {
+      position: absolute; left: 50%; transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      text-decoration: none; color: inherit;
+    }
+    .header-date { font-size: 8px; font-weight: 400; letter-spacing: 0.08em; margin-bottom: 1px; line-height: 1; }
+    .custom-header-logo img { height: 18px; }
     .custom-header-cart-toggle { border: none; padding: 0; font-family: inherit; }
     .page-section {
       padding: 4rem 1.5rem;
@@ -59,6 +64,15 @@
     }
     .page-section .events-instagram a {
       margin: 0 0.5rem;
+    }
+    .page-section .events-teaser {
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      margin-bottom: 1.5rem;
+      padding: 0.75rem 1rem;
+      background: rgba(0,0,0,0.04);
+      border-radius: 4px;
     }
     .page-section h1 {
       font-size: 14px;
@@ -110,6 +124,7 @@
       </nav>
     </div>
     <a class="custom-header-logo" href="../girls gone digital.html">
+      <span class="header-date">??/??/26</span>
       <img src="../assets/logo.png" alt="Girls Gone Digital">
     </a>
     <div class="custom-header-right">
@@ -127,6 +142,7 @@
   <main>
     <section class="page-section">
       <img class="events-logo" src="../assets/events-logo.png" alt="Girls Gone Digital">
+      <p class="events-teaser">Stay tuned in for more details on our first exclusive pop up hosted in LA — Events</p>
       <h1>Pop-ups & Events</h1>
       <p>Join us at curated pop-ups and events that connect creativity, culture, and community.</p>
       <a href="#">View Upcoming Events →</a>

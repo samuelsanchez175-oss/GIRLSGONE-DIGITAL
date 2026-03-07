@@ -1,6 +1,7 @@
 /* Mobile nav - hamburger menu */
 @media (max-width: 768px) {
   :root { --ice-header-h: 48px; }
+  .custom-header-logo img { height: 22px; }
   .custom-header,
   .custom-header-bar { height: var(--ice-header-h); min-height: var(--ice-header-h); }
   .custom-header { padding: 0 0.75rem; }
@@ -62,6 +63,8 @@
     display: inline-block;
     vertical-align: middle;
   }
+  body.has-announce-bar .nav-mobile-overlay,
+  body.has-announce-bar .nav-mobile-backdrop { top: calc(var(--ice-header-h) + var(--ice-announce-h)); }
   .nav-mobile-backdrop {
     position: fixed;
     inset: 0;
