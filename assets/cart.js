@@ -1,6 +1,7 @@
 (function(){
   var KEY='ggdCart';
   var PRODUCT_URLS={
+    'GIRLS GONE DIGITAL (ZINE) (Issue 1 Mar 2025)':'product-magazine.html',
     'GIRLS GONE DIGITAL (Issue 1 Mar 2025)':'product-magazine.html',
     'GGD T-SHIRT (BLK)':'product-tshirt-blk.html',
     'GGD T-SHIRT (WHT)':'product-tshirt-wht.html',

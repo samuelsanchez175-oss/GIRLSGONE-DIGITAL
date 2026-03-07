@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>GIRLS GONE DIGITAL – Issue 1 Mar 2025 – Girls Gone Digital</title>
+  <title>GIRLS GONE DIGITAL (ZINE) – Issue 1 Mar 2025 – Girls Gone Digital</title>
+  <!-- Product: ZINE, $25, carousel -->
   <style>
     :root { --ice-header-h: 28px; }
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -39,34 +40,95 @@
     .custom-header-logo img { height: 24px; }
     .custom-header-cart-toggle { border: none; padding: 0; font-family: inherit; }
     .product-section {
-      padding: 2rem 1rem 4rem;
+      padding: 0 0 2rem;
       max-width: 500px;
       margin: 0 auto;
       background: #f8e8f0;
     }
-    .product-image {
-      background: transparent;
+    .product-section .product-details { padding: 0 1rem; }
+    .product-carousel {
+      position: relative;
+      width: 100vw;
+      left: 50%;
+      right: 50%;
+      margin-left: -50vw;
+      margin-right: -50vw;
+      margin-bottom: 0;
+      min-height: 70vh;
       display: flex;
-      align-items: flex-end;
-      justify-content: center;
-      min-height: 320px;
-      margin-bottom: 1rem;
+      align-items: stretch;
+      justify-content: flex-start;
+      overflow: hidden;
+      padding: 0;
     }
-    .product-image img {
+    .carousel-track {
+      display: flex;
       width: 100%;
-      max-width: 360px;
-      object-fit: contain;
+      transition: transform 0.3s ease;
+    }
+    .carousel-slide {
+      flex: 0 0 100%;
+      width: 100%;
+      display: flex;
+      align-items: stretch;
+      justify-content: stretch;
+      min-height: 70vh;
+    }
+    .carousel-slide.carousel-slide--full {
+      min-height: 95vh;
+    }
+    .carousel-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
       display: block;
     }
-    .product-image-gallery {
+    .carousel-prev,
+    .carousel-next {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 40px;
+      height: 40px;
+      border: none;
+      background: rgba(0, 0, 0, 0.4);
+      color: #fff;
+      font-size: 24px;
+      line-height: 1;
+      cursor: pointer;
+      z-index: 2;
       display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      margin-bottom: 1.5rem;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
     }
-    .product-image-gallery .product-image {
-      min-height: 280px;
-      margin-bottom: 0;
+    .carousel-prev:hover,
+    .carousel-next:hover {
+      background: rgba(0, 0, 0, 0.6);
+    }
+    .carousel-prev { left: 0.25rem; }
+    .carousel-next { right: 0.25rem; }
+    .carousel-dots {
+      position: absolute;
+      bottom: 0.75rem;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      z-index: 2;
+    }
+    .carousel-dots button {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      border: none;
+      background: rgba(0, 0, 0, 0.3);
+      cursor: pointer;
+      padding: 0;
+    }
+    .carousel-dots button.is-active {
+      background: #111;
     }
     .product-name {
       font-size: 12px;
@@ -148,16 +210,23 @@
 
   <main>
     <section class="product-section">
-      <div class="product-image-gallery">
-        <div class="product-image"><img src="../assets/magazine-issue1-cover-v1.png" alt="GIRLS GONE DIGITAL Magazine – Issue 1 Mar 2025"></div>
-        <div class="product-image"><img src="../assets/magazine-issue1-cover-v2.png" alt="GIRLS GONE DIGITAL Magazine – Issue 1 Mar 2025"></div>
+      <div class="product-carousel" id="productCarousel">
+        <div class="carousel-track">
+          <div class="carousel-slide"><img src="../assets/edits/edit2.png" alt="" data-fallback="../assets/edits/edit2.jpg"></div>
+          <div class="carousel-slide carousel-slide--full"><img src="../assets/edits/edit1.png" alt="" data-fallback="../assets/edits/edit1.jpg"></div>
+        </div>
+        <button type="button" class="carousel-prev" id="carouselPrev" aria-label="Previous image">‹</button>
+        <button type="button" class="carousel-next" id="carouselNext" aria-label="Next image">›</button>
+        <div class="carousel-dots" id="carouselDots"></div>
       </div>
-      <h1 class="product-name">GIRLS GONE DIGITAL</h1>
-      <div class="product-issue">Issue 1 — Mar 2025</div>
-      <div class="product-price">$20.00</div>
-      <div class="product-actions">
-        <button type="button" class="product-add-btn" id="addBtn" data-name="GIRLS GONE DIGITAL (Issue 1 Mar 2025)" data-price="20.00">Add to Cart</button>
-        <a href="shop.html" class="product-back">← Back to Shop</a>
+      <div class="product-details">
+        <h1 class="product-name">GIRLS GONE DIGITAL (ZINE)</h1>
+        <div class="product-issue">Issue 1 — Mar 2025</div>
+        <div class="product-price" id="magazinePrice">$25.00</div>
+        <div class="product-actions">
+          <button type="button" class="product-add-btn" id="addBtn" data-name="GIRLS GONE DIGITAL (ZINE) (Issue 1 Mar 2025)" data-price="25.00">Add to Cart</button>
+          <a href="shop.html" class="product-back">← Back to Shop</a>
+        </div>
       </div>
     </section>
   </main>
@@ -167,7 +236,6 @@
       <div class="ice-footer-links">
         <span>Our Founder <a href="https://www.instagram.com/brandonalmengo/" target="_blank" rel="noopener">@brandonalmengo</a></span>
         <a href="mailto:Girlsgon.digital@gmail.com">Girlsgon.digital@gmail.com</a>
-        <a href="terms-of-service.html">Terms and Conditions</a>
       </div>
       <div>© 2026 Girls Gone Digital</div>
     </div>
@@ -188,6 +256,45 @@
         saveCart(c);
         btn.textContent = 'Added';
         setTimeout(function() { btn.textContent = 'Add to Cart'; }, 800);
+      });
+    })();
+    (function() {
+      var track = document.querySelector('#productCarousel .carousel-track');
+      var slides = document.querySelectorAll('#productCarousel .carousel-slide');
+      var prevBtn = document.getElementById('carouselPrev');
+      var nextBtn = document.getElementById('carouselNext');
+      var dotsEl = document.getElementById('carouselDots');
+      var current = 0;
+      var total = slides.length;
+      if (!track || total === 0) return;
+      function goTo(index) {
+        current = (index + total) % total;
+        track.style.transform = 'translateX(-' + (current * 100) + '%)';
+        if (dotsEl) {
+          dotsEl.querySelectorAll('button').forEach(function(d, i) {
+            d.classList.toggle('is-active', i === current);
+          });
+        }
+      }
+      if (prevBtn) prevBtn.addEventListener('click', function() { goTo(current - 1); });
+      if (nextBtn) nextBtn.addEventListener('click', function() { goTo(current + 1); });
+      for (var i = 0; i < total; i++) {
+        var btn = document.createElement('button');
+        btn.type = 'button';
+        btn.setAttribute('aria-label', 'Go to image ' + (i + 1));
+        btn.classList.toggle('is-active', i === 0);
+        (function(idx) { btn.addEventListener('click', function() { goTo(idx); }); })(i);
+        dotsEl.appendChild(btn);
+      }
+    })();
+  </script>
+  <script>
+    (function() {
+      document.querySelectorAll('#productCarousel .carousel-slide img[data-fallback]').forEach(function(img) {
+        img.addEventListener('error', function() {
+          var fallback = this.getAttribute('data-fallback');
+          if (fallback) { this.src = fallback; this.removeAttribute('data-fallback'); }
+        });
       });
     })();
   </script>
