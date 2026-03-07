@@ -63,8 +63,6 @@
     display: inline-block;
     vertical-align: middle;
   }
-  body.has-announce-bar .nav-mobile-overlay,
-  body.has-announce-bar .nav-mobile-backdrop { top: calc(var(--ice-header-h) + var(--ice-announce-h)); }
   .nav-mobile-backdrop {
     position: fixed;
     inset: 0;

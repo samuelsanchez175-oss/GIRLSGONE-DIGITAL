@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>GGD Short Sleeve Onesie (White) – Girls Gone Digital</title>
+  <title>GIRLS GONE DIGITAL – Issue 1 Mar 2025 – Girls Gone Digital</title>
   <style>
     :root { --ice-header-h: 28px; }
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -50,12 +50,23 @@
       align-items: flex-end;
       justify-content: center;
       min-height: 320px;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1rem;
     }
     .product-image img {
       width: 100%;
+      max-width: 360px;
       object-fit: contain;
       display: block;
+    }
+    .product-image-gallery {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .product-image-gallery .product-image {
+      min-height: 280px;
+      margin-bottom: 0;
     }
     .product-name {
       font-size: 12px;
@@ -64,36 +75,13 @@
       margin-bottom: 0.25rem;
       text-transform: uppercase;
     }
-    .product-price { font-size: 12px; font-weight: 400; margin-bottom: 1rem; }
-    .product-size-label {
-      font-size: 10px;
-      font-weight: 600;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
+    .product-issue {
+      font-size: 11px;
+      font-weight: 400;
+      color: #666;
       margin-bottom: 0.5rem;
-      display: block;
     }
-    .product-size-options {
-      display: flex;
-      gap: 0.5rem;
-      margin-bottom: 1.25rem;
-    }
-    .product-size-options input { display: none; }
-    .product-size-options label {
-      display: inline-block;
-      padding: 0.5rem 0.9rem;
-      font-size: 10px;
-      font-weight: 500;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      border: 1px solid rgba(0,0,0,0.2);
-      cursor: pointer;
-    }
-    .product-size-options input:checked + label {
-      background: #111;
-      color: #fff;
-      border-color: #111;
-    }
+    .product-price { font-size: 12px; font-weight: 400; margin-bottom: 1rem; }
     .product-add-btn {
       display: inline-block;
       padding: 0.6rem 1.2rem;
@@ -108,7 +96,6 @@
       cursor: pointer;
     }
     .product-add-btn:hover { opacity: 0.85; }
-    .product-add-btn:disabled { opacity: 0.5; cursor: not-allowed; }
     .product-actions {
       display: flex;
       justify-content: space-between;
@@ -139,7 +126,6 @@
     <div class="custom-header-left">
       <nav class="custom-header-nav">
         <ul>
-          <li><a href="magazine.html#digital-girl">Digital Girl of the Month</a></li>
           <li><a href="../girls gone digital.html">Home</a></li>
           <li><a href="magazine.html">Magazine</a></li>
         </ul>
@@ -162,24 +148,15 @@
 
   <main>
     <section class="product-section">
-      <div class="product-image"><img src="../assets/product-onezy-short-wht.png" alt="GGD Short Sleeve Onesie White"></div>
-      <h1 class="product-name">GGD SHORT SLEEVE ONESIE (WHT)</h1>
-      <div class="product-price">$35.00</div>
-      <label class="product-size-label">Size</label>
-      <div class="product-size-options">
-        <input type="radio" name="size" id="xs" value="XS">
-        <label for="xs">XS</label>
-        <input type="radio" name="size" id="s" value="S">
-        <label for="s">S</label>
-        <input type="radio" name="size" id="m" value="M">
-        <label for="m">M</label>
-        <input type="radio" name="size" id="l" value="L">
-        <label for="l">L</label>
-        <input type="radio" name="size" id="xl" value="XL">
-        <label for="xl">XL</label>
+      <div class="product-image-gallery">
+        <div class="product-image"><img src="../assets/magazine-issue1-cover-v1.png" alt="GIRLS GONE DIGITAL Magazine – Issue 1 Mar 2025"></div>
+        <div class="product-image"><img src="../assets/magazine-issue1-cover-v2.png" alt="GIRLS GONE DIGITAL Magazine – Issue 1 Mar 2025"></div>
       </div>
+      <h1 class="product-name">GIRLS GONE DIGITAL</h1>
+      <div class="product-issue">Issue 1 — Mar 2025</div>
+      <div class="product-price">$20.00</div>
       <div class="product-actions">
-        <button type="button" class="product-add-btn" id="addBtn" data-name="GGD SHORT SLEEVE ONESIE (WHT)" data-price="35.00">Add to Cart</button>
+        <button type="button" class="product-add-btn" id="addBtn" data-name="GIRLS GONE DIGITAL (Issue 1 Mar 2025)" data-price="20.00">Add to Cart</button>
         <a href="shop.html" class="product-back">← Back to Shop</a>
       </div>
     </section>
@@ -204,13 +181,13 @@
       var name = btn.getAttribute('data-name');
       var price = btn.getAttribute('data-price');
       btn.addEventListener('click', function() {
-        var sizeEl = document.querySelector('input[name="size"]:checked');
-        if (!sizeEl) { alert('Please select a size.'); return; }
-        var size = sizeEl.value;
         var c = getCart();
-        c.push({ name: name, price: price, qty: 1, size: size });
+        var i = c.findIndex(function(x) { return x.name === name; });
+        if (i >= 0) c[i].qty = (c[i].qty || 1) + 1;
+        else c.push({ name: name, price: price, qty: 1 });
         saveCart(c);
-        alert('Added to cart!');
+        btn.textContent = 'Added';
+        setTimeout(function() { btn.textContent = 'Add to Cart'; }, 800);
       });
     })();
   </script>

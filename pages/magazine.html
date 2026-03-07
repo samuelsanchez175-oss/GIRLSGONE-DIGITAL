@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Magazine – Girls Gone Digital</title>
   <style>
     :root { --ice-header-h: 28px; }
@@ -267,6 +267,22 @@
       cursor: pointer;
     }
     .form-toggle-btn:hover { opacity: 0.85; }
+    .magazine-purchase-btn {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.6rem 1.2rem;
+      font-family: inherit;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      background: #111;
+      color: #fff;
+      border: none;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    .magazine-purchase-btn:hover { opacity: 0.85; }
     .form-embed-wrap {
       margin: 2rem 0;
       min-height: 500px;
@@ -334,13 +350,13 @@
     }
   </style>
   <link rel="stylesheet" href="../assets/mobile-nav.css">
+  <link rel="stylesheet" href="../assets/iphone-mobile.css">
 </head>
 <body>
   <header class="custom-header">
     <div class="custom-header-left">
       <nav class="custom-header-nav">
         <ul>
-          <li><a href="magazine.html#digital-girl">Digital Girl of the Month</a></li>
           <li><a href="../girls gone digital.html">Home</a></li>
           <li><a href="magazine.html">Magazine</a></li>
         </ul>
@@ -368,7 +384,7 @@
       </video>
       <div class="magazine-video-overlay">
         <h1>DIGITAL GIRL OF THE MONTH</h1>
-        <p>Our cover star, <strong>SHELBY MVSTANG</strong> graces our cover.</p>
+        <p>Our cover star, <strong>SHELBY MVSTANG</strong>.</p>
         <a href="#digital-girl">Continue to feature →</a>
       </div>
       <button type="button" class="magazine-video-unmute" id="magazineVideoUnmute" aria-label="Toggle sound"><span class="icon-unmute">🔊</span><span class="icon-mute">🔇</span></button>
@@ -393,14 +409,8 @@
           <button type="button" class="form-collapse-btn" id="formCollapse">Collapse form</button>
           <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfu_5jsrLsMstw6Ti55Pdh9kIqzoc12UnamguljRT7T4s1O5g/viewform?embedded=true" width="100%" height="1024" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
         </div>
-        <p class="section-cta">If you'd like to continue reading more, purchase the full spread.</p>
-        <a href="#">View Archive →</a>
-      </div>
-    </section>
-
-    <section id="magazine-image-3" class="magazine-section magazine-image-section">
-      <div class="magazine-cover-wrap">
-        <img class="magazine-cover" src="../assets/magazine-image-3.png" alt="Girls Gone Digital magazine">
+        <p class="section-cta">If you like to see the full story purchase the Print magazine.</p>
+        <a href="shop.html#magazine" class="magazine-purchase-btn">Purchase Print Magazine →</a>
       </div>
     </section>
   </main>

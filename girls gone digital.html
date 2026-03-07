@@ -2,12 +2,11 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Girls Gone Digital – Creative Platform & Lifestyle Brand</title>
   <style>
     :root {
       --ice-header-h: 28px;
-      --ice-announce-h: 26px;
     }
 
     *,
@@ -24,7 +23,7 @@
       background: #ffffff;
       color: #111;
       line-height: 1.4;
-      padding-top: calc(var(--ice-header-h) + var(--ice-announce-h));
+      padding-top: var(--ice-header-h);
     }
 
     /* Skip to content */
@@ -119,39 +118,14 @@
       font-family: inherit;
     }
 
-    /* Announcement bar */
-    .announce-bar {
-      position: fixed;
-      top: var(--ice-header-h);
-      left: 0;
-      right: 0;
-      z-index: 99;
-      height: var(--ice-announce-h);
-      background: #f8e8f0;
-      border-bottom: 1px solid rgba(0, 0, 0, 0.06);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0 1rem;
-      font-size: 11px;
-      font-weight: 500;
-      letter-spacing: 0.03em;
-      text-align: center;
-    }
-    .announce-bar a {
-      color: #111;
-      text-decoration: none;
-    }
-    .announce-bar a:hover { opacity: 0.7; }
-
     /* Main content */
     main {
-      min-height: calc(100vh - var(--ice-header-h) - var(--ice-announce-h));
+      min-height: calc(100vh - var(--ice-header-h));
     }
 
     .landing-section {
       position: relative;
-      min-height: calc(100vh - var(--ice-header-h) - var(--ice-announce-h));
+      min-height: calc(100vh - var(--ice-header-h));
       overflow: hidden;
       background: #000;
     }
@@ -272,8 +246,9 @@
     }
   </style>
   <link rel="stylesheet" href="assets/mobile-nav.css">
+  <link rel="stylesheet" href="assets/iphone-mobile.css">
 </head>
-<body class="has-announce-bar">
+<body>
   <a class="skip-to-content-link" href="#MainContent">Skip to content</a>
 
   <header class="custom-header" role="banner">
@@ -281,7 +256,6 @@
       <div class="custom-header-left">
         <nav class="custom-header-nav">
           <ul>
-            <li><a href="pages/magazine.html#digital-girl">Digital Girl of the Month</a></li>
             <li><a href="girls gone digital.html">Home</a></li>
             <li><a href="pages/magazine.html">Magazine</a></li>
           </ul>
@@ -304,10 +278,6 @@
       </div>
     </div>
   </header>
-
-  <div class="announce-bar">
-    Stay tuned in for more details on our first exclusive pop up hosted in LA — <a href="pages/events.html">Events</a>
-  </div>
 
   <main id="MainContent" role="main">
     <section class="landing-section">
