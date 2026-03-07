@@ -106,17 +106,6 @@
     .ice-footer-links a { text-decoration: none; color: #111; }
     .ice-footer-links a:hover { opacity: 0.6; }
     @media (max-width: 768px) {
-      .custom-header {
-        background: #e5a8d5;
-        border-bottom: none;
-        padding: 0 0.75rem;
-      }
-      .custom-header-nav ul {
-        gap: 0.75rem;
-      }
-      .custom-header-nav a, .custom-header-cart-toggle {
-        font-size: 10px;
-      }
       .merch-section {
         padding: 1rem 0.75rem 3rem;
       }
@@ -130,6 +119,7 @@
       .ice-footer-inner { flex-direction: column; align-items: flex-start; gap: 16px; }
     }
   </style>
+  <link rel="stylesheet" href="../assets/mobile-nav.css">
 </head>
 <body>
   <header class="custom-header">
@@ -251,6 +241,7 @@
       });
     })();
   </script>
+  <script src="../assets/mobile-nav.js"></script>
   <script src="../assets/cart.js"></script>
 </body>
 </html>
