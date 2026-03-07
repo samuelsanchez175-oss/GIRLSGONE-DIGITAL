@@ -58,6 +58,10 @@
   }
   .nav-mobile-overlay a:hover,
   .nav-mobile-overlay .nav-mobile-cart:hover { opacity: 0.6; }
+  .nav-mobile-overlay .nav-bag-icon {
+    display: inline-block;
+    vertical-align: middle;
+  }
   .nav-mobile-backdrop {
     position: fixed;
     inset: 0;
