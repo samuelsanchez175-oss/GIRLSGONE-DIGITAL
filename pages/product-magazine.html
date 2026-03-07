@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>GIRLS GONE DIGITAL – Issue 1 Mar 2025 – Girls Gone Digital</title>
+  <title>GIRLS GONE DIGITAL (ZINE) – Issue 1 Mar 2025 – Girls Gone Digital</title>
   <style>
     :root { --ice-header-h: 28px; }
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -40,7 +40,7 @@
     .custom-header-cart-toggle { border: none; padding: 0; font-family: inherit; }
     .product-section {
       padding: 2rem 1rem 4rem;
-      max-width: 500px;
+      max-width: 720px;
       margin: 0 auto;
       background: #f8e8f0;
     }
@@ -60,13 +60,29 @@
     }
     .product-image-gallery {
       display: flex;
-      flex-direction: column;
+      flex-direction: row;
+      flex-wrap: wrap;
       gap: 1rem;
       margin-bottom: 1.5rem;
+      justify-content: center;
+      align-items: flex-end;
     }
     .product-image-gallery .product-image {
+      flex: 1;
+      min-width: 280px;
       min-height: 280px;
       margin-bottom: 0;
+    }
+    .product-image-gallery .product-image img {
+      max-width: 100%;
+    }
+    @media (max-width: 640px) {
+      .product-image-gallery {
+        flex-direction: column;
+      }
+      .product-image-gallery .product-image {
+        min-width: 100%;
+      }
     }
     .product-name {
       font-size: 12px;
@@ -152,11 +168,11 @@
         <div class="product-image"><img src="../assets/magazine-issue1-cover-v1.png" alt="GIRLS GONE DIGITAL Magazine – Issue 1 Mar 2025"></div>
         <div class="product-image"><img src="../assets/magazine-issue1-cover-v2.png" alt="GIRLS GONE DIGITAL Magazine – Issue 1 Mar 2025"></div>
       </div>
-      <h1 class="product-name">GIRLS GONE DIGITAL</h1>
+      <h1 class="product-name">GIRLS GONE DIGITAL (ZINE)</h1>
       <div class="product-issue">Issue 1 — Mar 2025</div>
-      <div class="product-price">$20.00</div>
+      <div class="product-price">$25.00</div>
       <div class="product-actions">
-        <button type="button" class="product-add-btn" id="addBtn" data-name="GIRLS GONE DIGITAL (Issue 1 Mar 2025)" data-price="20.00">Add to Cart</button>
+        <button type="button" class="product-add-btn" id="addBtn" data-name="GIRLS GONE DIGITAL (ZINE)" data-price="25.00">Add to Cart</button>
         <a href="shop.html" class="product-back">← Back to Shop</a>
       </div>
     </section>
