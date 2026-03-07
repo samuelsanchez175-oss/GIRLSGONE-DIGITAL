@@ -113,13 +113,49 @@
     .magazine-video-unmute.is-unmuted .icon-unmute { display: none; }
     .magazine-video-unmute.is-unmuted .icon-mute { display: inline; }
     .magazine-video-unmute .icon-mute { display: none; }
+    .magazine-video-overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-end;
+      padding: 2rem 1.5rem 3rem;
+      pointer-events: none;
+    }
+    .magazine-video-overlay > * { pointer-events: auto; }
+    .magazine-video-overlay h1 {
+      font-size: 14px;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+      color: #fff;
+      text-shadow: 0 1px 12px rgba(0, 0, 0, 0.5);
+    }
+    .magazine-video-overlay p {
+      font-size: 14px;
+      line-height: 1.5;
+      color: rgba(255, 255, 255, 0.95);
+      text-shadow: 0 1px 8px rgba(0, 0, 0, 0.5);
+      margin-bottom: 0.75rem;
+    }
+    .magazine-video-overlay a {
+      font-size: 11px;
+      letter-spacing: 0.05em;
+      text-decoration: none;
+      color: #fff;
+      text-shadow: 0 1px 12px rgba(0, 0, 0, 0.5);
+    }
+    .magazine-video-overlay a:hover { opacity: 0.85; }
     .magazine-intro-section {
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: flex-start;
+      justify-content: center;
       min-height: auto;
-      padding: 2rem 1.5rem 2rem;
+      padding: 2rem 1.5rem;
     }
     .magazine-intro-section .magazine-intro-cover {
       position: relative;
@@ -337,17 +373,15 @@
       <video id="magazineIntroVideo" autoplay muted loop playsinline>
         <source src="../assets/magazine-intro-video.m4v" type="video/mp4">
       </video>
+      <div class="magazine-video-overlay">
+        <h1>DIGITAL GIRL OF THE MONTH</h1>
+        <p>Our cover star, <strong>SHELBY MVSTANG</strong> graces our cover.</p>
+        <a href="#digital-girl">Continue to feature →</a>
+      </div>
       <button type="button" class="magazine-video-unmute" id="magazineVideoUnmute" aria-label="Toggle sound"><span class="icon-unmute">🔊</span><span class="icon-mute">🔇</span></button>
     </section>
 
     <section id="magazine-cover" class="page-section magazine-section magazine-intro-section">
-      <div class="page-content page-content--centered">
-        <div>
-          <h1>DIGITAL GIRL OF THE MONTH</h1>
-          <p>Our cover star, <strong>SHELBY MVSTANG</strong> graces our cover.</p>
-          <a href="#digital-girl">Continue to feature →</a>
-        </div>
-      </div>
       <div class="magazine-cover-wrap magazine-intro-cover">
         <img class="magazine-cover" src="../assets/magazine-cover-issue1.png" alt="Girls Gone Digital – Issue 1">
       </div>
