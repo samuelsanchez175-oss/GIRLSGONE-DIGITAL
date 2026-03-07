@@ -100,16 +100,14 @@
     }
     .ice-footer-inner {
       max-width: 1200px; margin: 0 auto;
-      display: flex; justify-content: space-between; align-items: flex-end;
+      display: flex; flex-direction: column; justify-content: center; align-items: center;
+      text-align: center; gap: 0.5rem;
     }
-    .ice-footer-links { display: flex; flex-direction: column; gap: 3px; }
+    .ice-footer-links { display: flex; flex-direction: column; align-items: center; gap: 3px; }
     .ice-footer-links a { text-decoration: none; color: #111; }
     .ice-footer-links a:hover { opacity: 0.6; }
-    .footer-events { font-size: 11px; }
-    .ice-footer-links .footer-events a { text-decoration: none; color: #111; }
-    .ice-footer-links .footer-events a:hover { opacity: 0.6; }
     @media (max-width: 768px) {
-      .ice-footer-inner { flex-direction: column; align-items: flex-start; gap: 16px; }
+      .ice-footer-inner { align-items: center; }
     }
   </style>
   <link rel="stylesheet" href="../assets/mobile-nav.css">
