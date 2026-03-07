@@ -115,8 +115,27 @@
     .magazine-video-unmute .icon-mute { display: none; }
     .magazine-intro-section {
       display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      min-height: auto;
+      padding: 2rem 1.5rem 2rem;
+    }
+    .magazine-intro-section .magazine-intro-cover {
+      position: relative;
+      inset: auto;
+      margin-top: 2rem;
+      display: flex;
       align-items: center;
       justify-content: center;
+      width: 100%;
+      max-width: 600px;
+    }
+    .magazine-intro-section .magazine-intro-cover .magazine-cover {
+      width: auto;
+      height: auto;
+      max-width: 100%;
+      max-height: 70vh;
     }
     .magazine-intro-section .page-content {
       position: relative;
@@ -321,18 +340,15 @@
       <button type="button" class="magazine-video-unmute" id="magazineVideoUnmute" aria-label="Toggle sound"><span class="icon-unmute">🔊</span><span class="icon-mute">🔇</span></button>
     </section>
 
-    <section class="page-section magazine-section magazine-intro-section">
+    <section id="magazine-cover" class="page-section magazine-section magazine-intro-section">
       <div class="page-content page-content--centered">
         <div>
           <h1>DIGITAL GIRL OF THE MONTH</h1>
           <p>Our cover star, <strong>SHELBY MVSTANG</strong> graces our cover.</p>
-          <a href="#magazine-cover">Continue to feature →</a>
+          <a href="#digital-girl">Continue to feature →</a>
         </div>
       </div>
-    </section>
-
-    <section id="magazine-cover" class="magazine-section magazine-image-section">
-      <div class="magazine-cover-wrap">
+      <div class="magazine-cover-wrap magazine-intro-cover">
         <img class="magazine-cover" src="../assets/magazine-cover-issue1.png" alt="Girls Gone Digital – Issue 1">
       </div>
     </section>
