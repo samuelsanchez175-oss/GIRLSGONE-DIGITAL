@@ -10,7 +10,7 @@
   window.SHOPIFY_STORE = window.SHOPIFY_STORE || 'girlsgonedigital-2';
 
   // Storefront API access token from Shopify Admin → Settings → Apps → Develop apps → Your app → API credentials
-  window.SHOPIFY_STOREFRONT_TOKEN = window.SHOPIFY_STOREFRONT_TOKEN || 'ddf19093dcc8ad91fc96815ab04bf02f';
+  window.SHOPIFY_STOREFRONT_TOKEN = window.SHOPIFY_STOREFRONT_TOKEN || 'b2fc66da3a471ab0b6949f8f07d5e378';
 
   /**
    * Map our site product names to Shopify Product Variant GIDs.
