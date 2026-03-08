@@ -239,6 +239,12 @@
       padding-bottom: 1px;
     }
 
+    .ice-footer-meta {
+      font-size: 10px;
+      color: #555;
+      letter-spacing: 0.02em;
+    }
+
     @media (max-width: 768px) {
       .ice-footer-inner {
         align-items: center;
@@ -256,7 +262,6 @@
       <div class="custom-header-left">
         <nav class="custom-header-nav">
           <ul>
-            <li><a href="girls gone digital.html">Home</a></li>
             <li><a href="pages/magazine.html">Magazine</a></li>
           </ul>
         </nav>
@@ -269,7 +274,8 @@
       <div class="custom-header-right">
         <nav class="custom-header-nav">
           <ul>
-            <li><a href="pages/shop.html">Shop</a></li>
+            <li><a href="pages/shop.html">Shop now</a></li>
+            <li><a href="girls gone digital.html">Home</a></li>
             <li><a href="pages/about.html">About</a></li>
             <li><a href="pages/events.html">Events</a></li>
             <li><button class="custom-header-cart-toggle" type="button" aria-label="Cart">Cart <span id="cartCount">0</span></button></li>
@@ -288,7 +294,7 @@
         <button type="button" class="landing-unmute" id="landingUnmute" aria-label="Toggle sound"><span class="icon-unmute">🔊</span><span class="icon-mute">🔇</span></button>
       </div>
       <div class="landing-links">
-        <a href="pages/shop.html">Shop</a>
+        <a href="pages/shop.html">Shop now</a>
         <a href="pages/about.html">About</a>
         <a href="pages/magazine.html#digital-girl">Digital Girl of the Month</a>
         <a href="pages/magazine.html">Magazine</a>
@@ -305,6 +311,7 @@
         <a href="mailto:Girlsgon.digital@gmail.com">Girlsgon.digital@gmail.com</a>
       </div>
       <div class="ice-footer-copy">© 2026 Girls Gone Digital</div>
+      <div class="ice-footer-meta" id="lastUpdatedMeta">Last updated: -- | Time: -- | Iteration #1</div>
     </div>
   </footer>
   <script>
@@ -318,6 +325,32 @@
           btn.classList.toggle('is-unmuted', !video.muted);
         });
       }
+    })();
+
+    (function() {
+      var meta = document.getElementById('lastUpdatedMeta');
+      var iteration = 1;
+      if (!meta) return;
+
+      function formatDateTime(d) {
+        return d.toLocaleString(undefined, {
+          year: 'numeric',
+          month: 'short',
+          day: '2-digit',
+          hour: '2-digit',
+          minute: '2-digit',
+          second: '2-digit'
+        });
+      }
+
+      var lastUpdated = new Date(document.lastModified);
+      function renderClock() {
+        var now = new Date();
+        meta.textContent = 'Last updated: ' + formatDateTime(lastUpdated) + ' | Time: ' + formatDateTime(now) + ' | Iteration #' + iteration;
+      }
+
+      renderClock();
+      setInterval(renderClock, 1000);
     })();
   </script>
   <script src="assets/mobile-nav.js"></script>
