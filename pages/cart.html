@@ -84,8 +84,24 @@
       font-size: 14px;
       padding-top: 1rem;
       border-top: 1px solid rgba(0,0,0,0.1);
-      margin-bottom: 1.5rem;
+      margin-bottom: 1rem;
     }
+    .cart-checkout-btn {
+      display: inline-block;
+      margin-bottom: 1.5rem;
+      padding: 0.75rem 1.5rem;
+      background: #000;
+      color: #fff;
+      border: none;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      cursor: pointer;
+      font-family: inherit;
+    }
+    .cart-checkout-btn:hover:not(:disabled) { opacity: 0.85; }
+    .cart-checkout-btn:disabled { opacity: 0.6; cursor: wait; }
     .cart-shop-link {
       display: inline-block;
       font-size: 11px;
@@ -143,6 +159,7 @@
     <section class="cart-section">
       <h1>Cart</h1>
       <div id="cartContent"></div>
+      <button type="button" class="cart-checkout-btn" id="cartCheckoutBtn" style="display: none;">Proceed to checkout</button>
       <a href="shop.html" class="cart-shop-link">← Continue shopping</a>
     </section>
   </main>
@@ -211,10 +228,20 @@
             if (window.ggdCartRender) window.ggdCartRender();
           });
         });
+        var checkoutBtn = document.getElementById('cartCheckoutBtn');
+        if (checkoutBtn) {
+          checkoutBtn.style.display = 'inline-block';
+          checkoutBtn.onclick = function() { if (window.ggdShopifyCheckout) window.ggdShopifyCheckout(checkoutBtn); };
+        }
+      } else {
+        var checkoutBtn = document.getElementById('cartCheckoutBtn');
+        if (checkoutBtn) checkoutBtn.style.display = 'none';
       }
       render();
     })();
   </script>
+  <script src="../assets/shopify-config.js"></script>
+  <script src="../assets/shopify-checkout.js"></script>
   <script src="../assets/mobile-nav.js"></script>
   <script src="../assets/cart.js"></script>
 </body>
