@@ -196,9 +196,11 @@
         var countEl = document.getElementById('cartCount');
         if (countEl) countEl.textContent = n;
         var content = document.getElementById('cartContent');
+        var checkoutBtn = document.getElementById('cartCheckoutBtn');
         if (!content) return;
         if (c.length === 0) {
           content.innerHTML = '<div class="cart-empty">Your cart is empty.</div>';
+          if (checkoutBtn) checkoutBtn.style.display = 'none';
           return;
         }
         var html = '<div class="cart-list">';
@@ -228,14 +230,10 @@
             if (window.ggdCartRender) window.ggdCartRender();
           });
         });
-        var checkoutBtn = document.getElementById('cartCheckoutBtn');
         if (checkoutBtn) {
           checkoutBtn.style.display = 'inline-block';
           checkoutBtn.onclick = function() { if (window.ggdShopifyCheckout) window.ggdShopifyCheckout(checkoutBtn); };
         }
-      } else {
-        var checkoutBtn = document.getElementById('cartCheckoutBtn');
-        if (checkoutBtn) checkoutBtn.style.display = 'none';
       }
       render();
     })();
