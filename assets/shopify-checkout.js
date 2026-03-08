@@ -53,6 +53,22 @@
     btn.textContent = loading ? 'Redirecting to checkout…' : 'Proceed to checkout';
   }
 
+  function getVariantIdFromGid(gid) {
+    var m = String(gid || '').match(/(\d+)\s*$/);
+    return m ? m[1] : '';
+  }
+
+  function buildPermalinkCheckoutUrl(store, lines) {
+    var items = (lines || []).map(function (line) {
+      var variantId = getVariantIdFromGid(line && line.merchandiseId);
+      var qty = Math.max(1, parseInt(line && line.quantity, 10) || 1);
+      if (!variantId) return '';
+      return variantId + ':' + qty;
+    }).filter(Boolean);
+    if (!store || items.length === 0) return '';
+    return 'https://' + store + '.myshopify.com/cart/' + items.join(',');
+  }
+
   /**
    * Run Shopify checkout: create cart via Storefront API, then redirect to checkoutUrl.
    * btn: optional button element to show loading state.
@@ -65,8 +81,8 @@
     }
 
     var config = getConfig();
-    if (!config.store || !config.token) {
-      showError('Shopify checkout is not configured. Add your store domain and Storefront API token in shopify-config.js (see SHOPIFY_SETUP.md).');
+    if (!config.store) {
+      showError('Shopify checkout is not configured. Add your store domain in shopify-config.js (see SHOPIFY_SETUP.md).');
       return;
     }
 
@@ -77,6 +93,17 @@
     }
     if (built.lines.length === 0) {
       showError('No cart lines could be built. Check SHOPIFY_VARIANT_MAP in shopify-config.js.');
+      return;
+    }
+
+    var permalinkCheckoutUrl = buildPermalinkCheckoutUrl(config.store, built.lines);
+    if (!config.token) {
+      if (permalinkCheckoutUrl) {
+        setCheckoutLoading(btn, true);
+        window.location.href = permalinkCheckoutUrl;
+      } else {
+        showError('Shopify Storefront API token is missing, and fallback checkout URL could not be built. Check SHOPIFY_VARIANT_MAP in shopify-config.js.');
+      }
       return;
     }
 
@@ -111,11 +138,17 @@
         var checkoutUrl = cartObj && cartObj.checkoutUrl;
         if (checkoutUrl) {
           window.location.href = checkoutUrl;
+        } else if (permalinkCheckoutUrl) {
+          window.location.href = permalinkCheckoutUrl;
         } else {
           showError('Could not get checkout URL. Check your Shopify variant IDs and API token.');
         }
       })
       .catch(function (err) {
+        if (permalinkCheckoutUrl) {
+          window.location.href = permalinkCheckoutUrl;
+          return;
+        }
         setCheckoutLoading(btn, false);
         showError('Checkout failed: ' + (err && err.message ? err.message : 'Network or server error.'));
       });
