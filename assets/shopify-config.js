@@ -15,6 +15,7 @@
   /**
    * Map our site product names to Shopify Product Variant GIDs.
    * In Shopify Admin: Products → [product] → Variants → copy variant ID, then use: gid://shopify/ProductVariant/VARIANT_ID
+   * For size-based products, you can map by "PRODUCT NAME - SIZE" (example: "GGD T-SHIRT (BLK) - M").
    */
   window.SHOPIFY_VARIANT_MAP = window.SHOPIFY_VARIANT_MAP || {
     'GIRLS GONE DIGITAL (ZINE) (Issue 1 Mar 2025)': '',

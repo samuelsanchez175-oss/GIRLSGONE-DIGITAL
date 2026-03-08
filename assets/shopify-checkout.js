@@ -26,10 +26,14 @@
     var lines = [];
     var missing = [];
     cart.forEach(function (item) {
-      var name = item.name;
-      var gid = variantMap[name] || variantMap[name.replace(/\s*-\s*[A-Z]+\s*$/, '')];
+      var name = (item && item.name ? String(item.name) : '').trim();
+      var size = (item && item.size ? String(item.size) : '').trim().toUpperCase();
+      var nameWithSize = size ? (name + ' - ' + size) : '';
+      var baseName = name.replace(/\s*-\s*[A-Z0-9]+\s*$/, '');
+      var gid = (nameWithSize && variantMap[nameWithSize]) || variantMap[name] || variantMap[baseName];
       if (!gid || gid.length < 10) {
-        if (missing.indexOf(name) === -1) missing.push(name);
+        var missingKey = nameWithSize || name;
+        if (missing.indexOf(missingKey) === -1) missing.push(missingKey);
         return;
       }
       var qty = Math.max(1, parseInt(item.qty, 10) || 1);
