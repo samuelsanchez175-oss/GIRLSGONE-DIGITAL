@@ -6,7 +6,7 @@
   'use strict';
 
   var CART_KEY = 'ggdCart';
-  var API_VERSION = '2024-01';
+  var API_VERSION = '2024-10';
 
   function getCart() {
     return JSON.parse(localStorage.getItem(CART_KEY) || '[]');
@@ -54,7 +54,8 @@
   }
 
   function getVariantIdFromGid(gid) {
-    var m = String(gid || '').match(/(\d+)\s*$/);
+    var s = String(gid || '').trim();
+    var m = s.match(/\/(\d{10,})$/) || s.match(/(\d{10,})/);
     return m ? m[1] : '';
   }
 
@@ -125,9 +126,28 @@
       },
       body: body
     })
-      .then(function (res) { return res.json(); })
-      .then(function (data) {
+      .then(function (res) {
+        return res.json().then(function (data) {
+          return { ok: res.ok, status: res.status, data: data };
+        });
+      })
+      .then(function (result) {
         setCheckoutLoading(btn, false);
+        var data = result && result.data ? result.data : {};
+        var topErrors = data.errors || [];
+        if (topErrors.length > 0) {
+          var topMsg = topErrors.map(function (e) {
+            var code = e && e.extensions && e.extensions.code ? ' [' + e.extensions.code + ']' : '';
+            return (e && e.message ? e.message : 'Unknown Shopify API error') + code;
+          }).join('. ');
+          if (permalinkCheckoutUrl) {
+            window.location.href = permalinkCheckoutUrl;
+            return;
+          }
+          showError('Shopify API error: ' + topMsg);
+          return;
+        }
+
         var payload = data.data && data.data.cartCreate;
         var errs = (payload && payload.userErrors) || [];
         if (errs.length > 0) {
@@ -138,11 +158,14 @@
         var checkoutUrl = cartObj && cartObj.checkoutUrl;
         if (checkoutUrl) {
           window.location.href = checkoutUrl;
-        } else if (permalinkCheckoutUrl) {
-          window.location.href = permalinkCheckoutUrl;
-        } else {
-          showError('Could not get checkout URL. Check your Shopify variant IDs and API token.');
+          return;
         }
+        var fallbackUrl = permalinkCheckoutUrl || buildPermalinkCheckoutUrl(config.store, built.lines);
+        if (fallbackUrl) {
+          window.location.href = fallbackUrl;
+          return;
+        }
+        showError('Could not get checkout URL. Check your Shopify variant IDs (shopify-config.js) and that your token is a Storefront API token with checkout scopes.');
       })
       .catch(function (err) {
         if (permalinkCheckoutUrl) {
