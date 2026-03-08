@@ -18,12 +18,61 @@ Your site cart is wired to **Shopify’s hosted checkout**. Customers add items 
 
 ## Step 1: Create products in Shopify
 
-In **Shopify Admin** → **Products**:
+### 1a. Open your store and go to Products
 
-- Create one product per item you sell (e.g. Zine, GGD T‑Shirt Black, GGD T‑Shirt White, Short Sleeve Onesie Black/White, Long Sleeve Onesie Black/White).
-- Set titles and prices to match your site ($25 for Zine, $35 for T‑shirts/short onesies, $45 for long onesies, etc.).
-- For each product, open it and go to the **Variants** section. Each variant has an ID (numeric). You’ll use it in the form:  
-  `gid://shopify/ProductVariant/VARIANT_ID`
+1. Go to [shopify.com](https://www.shopify.com) and log in.
+2. Open your store (e.g. **Girls Gone Digital**).
+3. In the left sidebar click **Products**.
+
+### 1b. Add each product
+
+Click **Add product** and create one product for each item you sell. You can match your site like this:
+
+| Your site item | Suggested title in Shopify | Price |
+|----------------|----------------------------|-------|
+| Zine (Issue 1 Mar 2025) | GIRLS GONE DIGITAL (ZINE) (Issue 1 Mar 2025) | $25 |
+| GGD T-SHIRT (BLK) | GGD T-SHIRT (BLK) | $35 |
+| GGD T-SHIRT (WHT) | GGD T-SHIRT (WHT) | $35 |
+| Short sleeve onesie Black | GGD SHORT SLEEVE ONESIE (BLK) | $35 |
+| Short sleeve onesie White | GGD SHORT SLEEVE ONESIE (WHT) | $35 |
+| Long sleeve onesie Black | GGD LONG SLEEVE ONESIE (BLK) | $45 |
+| Long sleeve onesie White | GGD LONG SLEEVE ONESIE (WHT) | $45 |
+
+- Fill in **Title** and **Price** (and optional description/image).
+- If the product has no size/color options, leave **Variants** as the default single variant.
+- Click **Save**.
+
+### 1c. Get the variant ID for each product
+
+You need the **variant ID** (a long number) for each product. Use either method below.
+
+**Method A – From the product page URL**
+
+1. In **Products**, click a product to open it.
+2. If it has one variant, the URL might look like:  
+   `https://admin.shopify.com/store/your-store/products/123456789`
+3. If it has multiple variants, click a variant; the URL will look like:  
+   `https://admin.shopify.com/store/your-store/products/123456789/variants/36485954240671`  
+   The number after **`/variants/`** (e.g. `36485954240671`) is the **variant ID**.
+
+**Method B – From the product JSON (when the URL only shows /products/ID)**
+
+If your URL looks like `.../products/7879720075333` (no `/variants/`), the number is the **product** ID. Checkout needs the **variant** ID. Get it like this:
+
+1. Stay on the product page in Shopify Admin.
+2. In the address bar, add **`.json`** to the end of the URL and press Enter.  
+   Example: `.../products/7879720075333` → `.../products/7879720075333.json`
+3. The page will show raw JSON. Find the **`"variants"`** array. The first variant has an **`"id"`** (a long number). That number is the **variant ID**.
+4. In config use: `gid://shopify/ProductVariant/` + that number (e.g. `gid://shopify/ProductVariant/43728938479653`).
+
+**Format for the config**
+
+In `shopify-config.js` you use that ID in this form:  
+`gid://shopify/ProductVariant/VARIANT_ID`  
+Example: if the variant ID is `36485954240671`, use:  
+`gid://shopify/ProductVariant/36485954240671`
+
+Repeat for every product (Zine, each T-shirt, each onesie) and write down each variant ID; you’ll paste them into **Step 3**.
 
 ---
 

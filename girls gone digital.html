@@ -239,7 +239,8 @@
       padding-bottom: 1px;
     }
 
-    .ice-footer-meta {
+    .ice-footer-meta,
+    .ice-footer-iteration {
       font-size: 10px;
       color: #555;
       letter-spacing: 0.02em;
@@ -311,9 +312,11 @@
         <a href="mailto:Girlsgon.digital@gmail.com">Girlsgon.digital@gmail.com</a>
       </div>
       <div class="ice-footer-copy">© 2026 Girls Gone Digital</div>
-      <div class="ice-footer-meta" id="lastUpdatedMeta">Last updated: -- | Time: -- | Iteration #1</div>
+      <div class="ice-footer-meta" id="lastUpdatedMeta">Last updated: -- | Time: -- | Iteration #0010</div>
+      <div class="ice-footer-iteration">GitHub update Iteration #<span id="footerIteration">0010</span></div>
     </div>
   </footer>
+  <script src="assets/iteration.js"></script>
   <script>
     (function() {
       var video = document.getElementById('landingVideo');
@@ -329,7 +332,7 @@
 
     (function() {
       var meta = document.getElementById('lastUpdatedMeta');
-      var iteration = 1;
+      var iterationNum = (typeof window.GGD_ITERATION !== 'undefined' && window.GGD_ITERATION != null) ? String(window.GGD_ITERATION).padStart(4, '0') : '0010';
       if (!meta) return;
 
       function formatDateTime(d) {
@@ -346,8 +349,10 @@
       var lastUpdated = new Date(document.lastModified);
       function renderClock() {
         var now = new Date();
-        meta.textContent = 'Last updated: ' + formatDateTime(lastUpdated) + ' | Time: ' + formatDateTime(now) + ' | Iteration #' + iteration;
+        meta.textContent = 'Last updated: ' + formatDateTime(lastUpdated) + ' | Time: ' + formatDateTime(now) + ' | Iteration #' + iterationNum;
       }
+      var footerIterationEl = document.getElementById('footerIteration');
+      if (footerIterationEl) footerIterationEl.textContent = iterationNum;
 
       renderClock();
       setInterval(renderClock, 1000);
