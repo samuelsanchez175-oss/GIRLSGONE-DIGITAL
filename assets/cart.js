@@ -3,8 +3,8 @@
   var PRODUCT_URLS={
     'GIRLS GONE DIGITAL (ZINE) (Issue 1 Mar 2025)':'product-magazine.html',
     'GIRLS GONE DIGITAL (Issue 1 Mar 2025)':'product-magazine.html',
-    'GGD T-SHIRT (BLK)':'product-tshirt-blk.html',
-    'GGD T-SHIRT (WHT)':'product-tshirt-wht.html',
+    'GGD CROP TOP (BLK)':'product-tshirt-blk.html',
+    'GGD CROP TOP (WHT)':'product-tshirt-wht.html',
     'GGD SHORT SLEEVE ONESIE (BLK)':'product-onesie-short-blk.html',
     'GGD SHORT SLEEVE ONESIE (WHT)':'product-onesie-short-wht.html',
     'GGD LONG SLEEVE ONESIE (BLK)':'product-onesie-long-blk.html',
