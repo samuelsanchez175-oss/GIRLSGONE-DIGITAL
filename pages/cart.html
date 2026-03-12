@@ -58,11 +58,34 @@
     .cart-list { margin-bottom: 1.5rem; }
     .cart-row {
       display: flex;
-      justify-content: space-between;
-      align-items: baseline;
+      align-items: center;
+      gap: 1rem;
       padding: 0.75rem 0;
       border-bottom: 1px solid rgba(0,0,0,0.08);
       font-size: 12px;
+    }
+    .cart-row__thumb {
+      flex-shrink: 0;
+      width: 56px;
+      height: 56px;
+      border-radius: 4px;
+      overflow: hidden;
+      background: #e8e0dc;
+    }
+    .cart-row__thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .cart-row__info {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 0.25rem 0.5rem;
     }
     .cart-row__name, .cart-row__name-link { font-weight: 600; }
     .cart-row__name-link { color: inherit; text-decoration: none; }
@@ -185,12 +208,25 @@
         'GIRLS GONE DIGITAL (Issue 1 Mar 2025)': 'product-magazine.html',
         'GGD T-SHIRT (BLK)': 'product-tshirt-blk.html',
         'GGD T-SHIRT (WHT)': 'product-tshirt-wht.html',
+        'GGD CROP TOP (BLK)': 'shop.html',
+        'GGD CROP TOP (WHT)': 'shop.html',
         'GGD SHORT SLEEVE ONESIE (BLK)': 'product-onesie-short-blk.html',
         'GGD SHORT SLEEVE ONESIE (WHT)': 'product-onesie-short-wht.html',
         'GGD LONG SLEEVE ONESIE (BLK)': 'product-onesie-long-blk.html',
         'GGD LONG SLEEVE ONESIE (WHT)': 'product-onesie-long-wht.html'
       };
+      var PRODUCT_IMAGES = {
+        'GIRLS GONE DIGITAL (ZINE) (Issue 1 Mar 2025)': '../assets/magazine-issue1-cover-v1.png',
+        'GIRLS GONE DIGITAL (Issue 1 Mar 2025)': '../assets/magazine-issue1-cover-v1.png',
+        'GGD T-SHIRT (BLK)': '../assets/product-tshirt-blk-raw.png',
+        'GGD T-SHIRT (WHT)': '../assets/product-tshirt-wht.png',
+        'GGD SHORT SLEEVE ONESIE (BLK)': '../assets/product-onezy-short-blk-raw.png',
+        'GGD SHORT SLEEVE ONESIE (WHT)': '../assets/product-onesie-short-wht-hero.png',
+        'GGD LONG SLEEVE ONESIE (BLK)': '../assets/product-onezy-long-blk-raw.png',
+        'GGD LONG SLEEVE ONESIE (WHT)': '../assets/product-onezy-long-wht.png'
+      };
       function getProductUrl(name) { return PRODUCT_URLS[name] || 'shop.html'; }
+      function getProductImage(name) { return PRODUCT_IMAGES[name] || ''; }
       function getCart() { return JSON.parse(localStorage.getItem(KEY) || '[]'); }
       function saveCart(c) { localStorage.setItem(KEY, JSON.stringify(c)); render(); }
       function render() {
@@ -213,11 +249,18 @@
           var displayName = item.name + (item.size ? ' - ' + item.size : '');
           var url = getProductUrl(item.name);
           var nameHtml = url ? '<a href="' + url + '" class="cart-row__name-link">' + displayName + '</a>' : '<span class="cart-row__name">' + displayName + '</span>';
+          var imgSrc = getProductImage(item.name);
+          var thumbHtml = imgSrc
+            ? '<div class="cart-row__thumb"><img src="' + imgSrc + '" alt=""></div>'
+            : '<div class="cart-row__thumb" aria-hidden="true"></div>';
           html += '<div class="cart-row" data-idx="' + idx + '">';
+          html += thumbHtml;
+          html += '<div class="cart-row__info">';
           html += nameHtml;
           html += '<span class="cart-row__qty">×' + q + '</span>';
           html += '<span class="cart-row__price">$' + (p * q).toFixed(2) + '</span>';
           html += '<button type="button" class="cart-row__remove" aria-label="Remove">Remove</button>';
+          html += '</div>';
           html += '</div>';
         });
         html += '</div>';
