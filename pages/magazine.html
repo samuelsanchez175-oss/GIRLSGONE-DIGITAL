@@ -1,6 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <script>
+    (function () {
+      if (location.hash !== '#digital-girl') return;
+      if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+      history.replaceState(null, '', location.pathname + location.search);
+      var pin = true;
+      function top() { if (pin) window.scrollTo(0, 0); }
+      function release() { pin = false; }
+      top();
+      document.addEventListener('DOMContentLoaded', top);
+      window.addEventListener('load', function () {
+        top();
+        setTimeout(release, 50);
+      });
+      window.addEventListener('wheel', release, { passive: true });
+      window.addEventListener('touchstart', release, { passive: true });
+      document.addEventListener('click', function (event) {
+        var link = event.target.closest && event.target.closest('a[href="#digital-girl"]');
+        if (link) release();
+      });
+    })();
+  </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Magazine – Girls Gone Digital</title>

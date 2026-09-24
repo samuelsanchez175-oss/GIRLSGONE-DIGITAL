@@ -251,12 +251,265 @@
         align-items: center;
       }
     }
+
+    /* Subscribe popup */
+    body.ggd-popup-open .custom-header,
+    body.ggd-popup-open main,
+    body.ggd-popup-open .ice-footer {
+      filter: blur(18px);
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .ggd-popup-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 12000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: max(1rem, env(safe-area-inset-top, 0px)) 1rem max(1rem, env(safe-area-inset-bottom, 0px));
+      background: rgba(18, 6, 16, 0.28);
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: opacity 0.25s ease, visibility 0.25s ease;
+    }
+
+    .ggd-popup-overlay.is-visible {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+    }
+
+    .ggd-popup-modal {
+      position: relative;
+      background: #fff;
+      color: #0a0a0a;
+      width: 100%;
+      max-width: 500px;
+      max-height: calc(100vh - 2rem);
+      overflow: auto;
+      padding: 2rem 1.35rem 1.75rem;
+      border-radius: 14px;
+      box-shadow: 0 16px 48px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    @media (min-width: 480px) {
+      .ggd-popup-modal {
+        padding: 2.25rem 1.75rem 2rem;
+      }
+    }
+
+    .ggd-popup-close {
+      position: absolute;
+      top: 0.55rem;
+      right: 0.7rem;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      line-height: 1;
+      color: #555;
+      cursor: pointer;
+      padding: 0.25rem;
+    }
+
+    .ggd-popup-close:hover { opacity: 0.7; }
+
+    .ggd-popup-logo {
+      width: 270px;
+      height: 106px;
+      max-width: 86%;
+      object-fit: contain;
+      margin: 0 auto 1.1rem;
+      display: block;
+    }
+
+    .ggd-popup-title {
+      font-family: "Bebas Neue", "Arial Narrow", "Helvetica Neue", sans-serif;
+      font-size: 1.85rem;
+      font-weight: 400;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      line-height: 1.05;
+      margin: 0;
+      color: #111;
+    }
+
+    .ggd-popup-fields {
+      margin: 1.2rem 0 0.95rem;
+    }
+
+    .ggd-popup-card {
+      border: 1px solid #111;
+      border-radius: 1rem;
+      padding: 0.55rem 0.8rem 0.65rem;
+      text-align: left;
+      background: #fff;
+    }
+
+    .ggd-popup-card + .ggd-popup-card {
+      margin-top: 0.75rem;
+    }
+
+    .ggd-popup-label {
+      display: block;
+      font-size: 0.7rem;
+      line-height: 1.3;
+      color: #9ca3af;
+      margin-bottom: 0.45rem;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+    }
+
+    .ggd-popup-email,
+    .ggd-popup-phone {
+      display: block;
+      width: 100%;
+      border: none;
+      font-size: 1.02rem;
+      font-family: inherit;
+      outline: none;
+      background: transparent;
+      color: #111;
+      padding: 0.15rem 0;
+    }
+
+    .ggd-popup-email::placeholder,
+    .ggd-popup-phone::placeholder {
+      color: #b0b0b0;
+    }
+
+    .ggd-popup-phone-row {
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+    }
+
+    .ggd-popup-country {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.2rem;
+      flex-shrink: 0;
+      font-size: 0.95rem;
+      color: #111;
+      font-weight: 500;
+    }
+
+    .ggd-popup-phone {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .ggd-popup-disclaimer {
+      font-size: 0.68rem;
+      line-height: 1.45;
+      color: #6b6b6b;
+      letter-spacing: 0.02em;
+      margin: 0 0 1.1rem;
+      text-align: center;
+    }
+
+    .ggd-popup-disclaimer a {
+      color: #171717;
+      text-decoration: underline;
+    }
+
+    .ggd-popup-signup {
+      display: block;
+      width: 100%;
+      padding: 0.95rem 1rem;
+      margin-bottom: 0.25rem;
+      background: #c2187a;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      font-family: inherit;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      cursor: pointer;
+    }
+
+    .ggd-popup-signup:hover { background: #a81468; }
+
+    .ggd-popup-signup:disabled {
+      opacity: 0.65;
+      cursor: not-allowed;
+    }
+
+    .ggd-popup-dismiss {
+      display: block;
+      width: 100%;
+      margin-top: 0.5rem;
+      padding: 0.35rem 0.5rem;
+      background: transparent;
+      border: none;
+      color: #777;
+      font-family: inherit;
+      font-size: 0.94rem;
+      font-weight: 500;
+      cursor: pointer;
+    }
+
+    .ggd-popup-dismiss:hover { color: #333; }
+
+    .ggd-popup-status {
+      margin: 0.75rem 0 0;
+      font-size: 0.85rem;
+      line-height: 1.4;
+      color: #9f1239;
+    }
+
+    .ggd-popup-status.is-success { color: #111; }
+
+    @media (prefers-reduced-motion: reduce) {
+      body.ggd-popup-open .custom-header,
+      body.ggd-popup-open main,
+      body.ggd-popup-open .ice-footer {
+        filter: none;
+      }
+      .ggd-popup-overlay {
+        background: rgba(18, 6, 16, 0.55);
+        transition: none;
+      }
+    }
   </style>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap">
   <link rel="stylesheet" href="assets/mobile-nav.css">
   <link rel="stylesheet" href="assets/iphone-mobile.css">
   <script src="assets/vercel-analytics.js"></script>
 </head>
 <body>
+  <div id="ggdSubscribePopup" class="ggd-popup-overlay" aria-hidden="true">
+    <div class="ggd-popup-modal" role="dialog" aria-modal="true" aria-labelledby="ggdPopupTitle">
+      <button type="button" class="ggd-popup-close" aria-label="Close">&times;</button>
+      <img src="assets/logo.png" alt="Girls Gone Digital" class="ggd-popup-logo" width="270" height="106">
+      <p id="ggdPopupTitle" class="ggd-popup-title">Subscribe for updates and special events.</p>
+      <div class="ggd-popup-fields">
+        <div class="ggd-popup-card">
+          <label class="ggd-popup-label" for="ggdPopupEmail">What is your email?</label>
+          <input type="email" class="ggd-popup-email" id="ggdPopupEmail" name="email" autocomplete="email" inputmode="email" placeholder="you@example.com" aria-required="true" aria-describedby="ggdPopupDisclaimer">
+        </div>
+        <div class="ggd-popup-card">
+          <label class="ggd-popup-label" for="ggdPopupPhone">What is your phone number?</label>
+          <div class="ggd-popup-phone-row">
+            <div class="ggd-popup-country" role="group" aria-label="Country code">
+              <span aria-hidden="true">🇺🇸</span>
+              <span>+1</span>
+            </div>
+            <input type="tel" class="ggd-popup-phone" id="ggdPopupPhone" name="phone" autocomplete="tel" inputmode="tel" placeholder="(555) 555-5555" aria-required="true" aria-describedby="ggdPopupDisclaimer">
+          </div>
+        </div>
+      </div>
+      <p class="ggd-popup-disclaimer" id="ggdPopupDisclaimer">By signing up, you agree to receive emails and texts about updates and events from Girls Gone Digital. Message and data rates may apply. Reply STOP to opt out of texts. See our <a href="pages/terms-of-service.html">Terms of Service</a>.</p>
+      <button type="button" class="ggd-popup-signup">Sign up</button>
+      <button type="button" class="ggd-popup-dismiss">No thanks</button>
+      <p id="ggdPopupStatus" class="ggd-popup-status" role="status" aria-live="polite" hidden></p>
+    </div>
+  </div>
   <a class="skip-to-content-link" href="#MainContent">Skip to content</a>
 
   <header class="custom-header" role="banner">
@@ -361,5 +614,132 @@
   </script>
   <script src="assets/mobile-nav.js"></script>
   <script src="assets/cart.js"></script>
+  <script>
+    (function () {
+      var popup = document.getElementById('ggdSubscribePopup');
+      var statusEl = document.getElementById('ggdPopupStatus');
+      if (!popup) return;
+
+      var emailInput = document.getElementById('ggdPopupEmail');
+      var phoneInput = document.getElementById('ggdPopupPhone');
+      var signupButton = popup.querySelector('.ggd-popup-signup');
+      var lastFocus = null;
+
+      function setStatus(message, isSuccess) {
+        if (!statusEl) return;
+        if (!message) {
+          statusEl.hidden = true;
+          statusEl.textContent = '';
+          statusEl.classList.remove('is-success');
+          return;
+        }
+        statusEl.hidden = false;
+        statusEl.textContent = message;
+        statusEl.classList.toggle('is-success', !!isSuccess);
+      }
+
+      function hidePopup() {
+        popup.classList.remove('is-visible');
+        popup.setAttribute('aria-hidden', 'true');
+        document.body.classList.remove('ggd-popup-open');
+        setStatus('');
+        if (lastFocus && typeof lastFocus.focus === 'function') lastFocus.focus();
+      }
+
+      function showPopup() {
+        lastFocus = document.activeElement;
+        popup.classList.add('is-visible');
+        popup.setAttribute('aria-hidden', 'false');
+        document.body.classList.add('ggd-popup-open');
+        if (emailInput) emailInput.focus();
+      }
+
+      function normalizePhone(rawPhone) {
+        var digits = String(rawPhone || '').replace(/\D/g, '');
+        if (digits.length === 11 && digits.charAt(0) === '1') digits = digits.slice(1);
+        return digits;
+      }
+
+      function validEmail(rawEmail) {
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(rawEmail || '').trim());
+      }
+
+      popup.querySelector('.ggd-popup-close').addEventListener('click', hidePopup);
+      popup.querySelector('.ggd-popup-dismiss').addEventListener('click', hidePopup);
+      popup.addEventListener('click', function (event) {
+        if (event.target === popup) hidePopup();
+      });
+
+      document.addEventListener('keydown', function (event) {
+        if (!popup.classList.contains('is-visible')) return;
+        if (event.key === 'Escape') {
+          event.preventDefault();
+          hidePopup();
+        }
+      });
+
+      if (signupButton) {
+        signupButton.addEventListener('click', function () {
+          var rawEmail = emailInput ? String(emailInput.value || '').trim() : '';
+          var phoneDigits = normalizePhone(phoneInput ? phoneInput.value : '');
+          setStatus('');
+
+          if (!validEmail(rawEmail)) {
+            if (emailInput) {
+              emailInput.setAttribute('aria-invalid', 'true');
+              emailInput.focus();
+            }
+            setStatus('Enter a valid email address.');
+            return;
+          }
+          if (emailInput) emailInput.setAttribute('aria-invalid', 'false');
+
+          if (phoneDigits.length !== 10) {
+            if (phoneInput) {
+              phoneInput.setAttribute('aria-invalid', 'true');
+              phoneInput.focus();
+            }
+            setStatus('Enter a valid 10-digit phone number.');
+            return;
+          }
+          if (phoneInput) phoneInput.setAttribute('aria-invalid', 'false');
+
+          signupButton.disabled = true;
+          signupButton.setAttribute('aria-busy', 'true');
+          fetch('/api/subscribe', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              email: rawEmail,
+              phone: phoneDigits,
+              path: window.location.pathname
+            })
+          }).then(function (response) {
+            return response.json().catch(function () { return {}; }).then(function (body) {
+              if (!response.ok) {
+                throw new Error(body && body.error ? body.error : "Couldn't save your signup. Please try again.");
+              }
+              return body;
+            });
+          }).then(function () {
+            try {
+              localStorage.setItem('ggdSubscribeEmail', rawEmail.toLowerCase());
+              localStorage.setItem('ggdSubscribePhone', phoneDigits);
+            } catch (e) {}
+            setStatus("You're signed up for updates.", true);
+            signupButton.textContent = 'Signed up';
+            window.setTimeout(hidePopup, 900);
+          }).catch(function (err) {
+            setStatus(err && err.message ? err.message : "Couldn't save your signup. Please try again.");
+            signupButton.disabled = false;
+            signupButton.removeAttribute('aria-busy');
+            signupButton.textContent = 'Sign up';
+          });
+        });
+      }
+
+      window.setTimeout(showPopup, 900);
+    })();
+  </script>
 </body>
 </html>
