@@ -54,7 +54,7 @@
       ul.appendChild(li);
     }
     var base = '';
-    if (window.location.pathname.indexOf('/pages/') !== -1 || (window.location.pathname.split('/').length > 2 && document.querySelector('a[href="../girls gone digital.html"]'))) {
+    if (window.location.pathname.indexOf('/pages/') !== -1 || (window.location.pathname.split('/').length > 2 && document.querySelector('a[href="/home"]'))) {
       base = '../';
     }
     if (leftNav) {

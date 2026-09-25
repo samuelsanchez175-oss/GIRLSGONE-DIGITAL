@@ -1,5 +1,18 @@
 {
+  "redirects": [
+    {
+      "source": "/girls gone digital.html",
+      "destination": "/home",
+      "permanent": true
+    },
+    {
+      "source": "/girls gone digital",
+      "destination": "/home",
+      "permanent": true
+    }
+  ],
   "rewrites": [
+    { "source": "/home", "destination": "/girls gone digital.html" },
     { "source": "/", "destination": "/girls gone digital.html" }
   ]
 }

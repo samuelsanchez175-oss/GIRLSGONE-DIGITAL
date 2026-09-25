@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <script>
+    if (/girls(?:%20|\s)gone(?:%20|\s)digital/i.test(location.pathname)) {
+      location.replace("/home" + location.search + location.hash);
+    }
+  </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Girls Gone Digital – Creative Platform & Lifestyle Brand</title>
@@ -522,7 +527,7 @@
         </nav>
       </div>
 
-      <a class="custom-header-logo" href="girls gone digital.html">
+      <a class="custom-header-logo" href="/home">
         <img src="assets/logo.png" alt="Girls Gone Digital">
       </a>
 
@@ -530,7 +535,7 @@
         <nav class="custom-header-nav">
           <ul>
             <li><a href="pages/shop.html">Shop now</a></li>
-            <li><a href="girls gone digital.html">Home</a></li>
+            <li><a href="/home">Home</a></li>
             <li><a href="pages/about.html">About</a></li>
             <li><a href="pages/events.html">Events</a></li>
             <li><button class="custom-header-cart-toggle" type="button" aria-label="Cart">Cart <span id="cartCount">0</span></button></li>
@@ -554,7 +559,7 @@
         <a href="pages/magazine.html#digital-girl">Digital Girl of the Month</a>
         <a href="pages/magazine.html">Magazine</a>
         <a href="pages/events.html">Events</a>
-        <a href="girls gone digital.html">Home</a>
+        <a href="/home">Home</a>
       </div>
     </section>
   </main>
