@@ -18,6 +18,7 @@
    * For size-based products, you can map by "PRODUCT NAME - SIZE" (example: "GGD T-SHIRT (BLK) - M").
    */
   window.SHOPIFY_VARIANT_MAP = window.SHOPIFY_VARIANT_MAP || {
+    'GIRLS GONE DIGITAL (ZINE) (Issue 1 Oct 2026)': 'gid://shopify/ProductVariant/44762668531781',
     'GIRLS GONE DIGITAL (ZINE) (Issue 1 Mar 2025)': 'gid://shopify/ProductVariant/44762668531781',
     'GIRLS GONE DIGITAL (Issue 1 Mar 2025)': 'gid://shopify/ProductVariant/44762668531781',
     'GGD T-SHIRT (BLK)': '',
