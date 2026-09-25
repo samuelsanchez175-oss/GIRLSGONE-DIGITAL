@@ -1,7 +1,9 @@
 {
   "redirects": [
     { "source": "/girls gone digital.html", "destination": "/home", "type": 301 },
-    { "source": "/girls gone digital", "destination": "/home", "type": 301 }
+    { "source": "/girls gone digital", "destination": "/home", "type": 301 },
+    { "source": "/girls%20gone%20digital.html", "destination": "/home", "type": 301 },
+    { "source": "/girls%20gone%20digital", "destination": "/home", "type": 301 }
   ],
   "rewrites": [
     { "source": "/home", "destination": "/girls gone digital.html" }
